@@ -54,16 +54,17 @@
             </div>
             
             <!-- Floating Stats/Icons -->
-            <div class="absolute top-10 left-10 hidden md:block animate-float">
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-xl">
-                    <span class="text-3xl">📱</span>
-                    <span class="text-white font-bold ml-2">LCD Expert</span>
+            <!-- Floating Stats/Icons -->
+            <div class="absolute top-4 left-4 md:top-10 md:left-10 animate-float transform scale-75 md:scale-100 origin-top-left z-0 opacity-80 md:opacity-100">
+                <div class="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/20 shadow-xl">
+                    <span class="text-2xl md:text-3xl">📱</span>
+                    <span class="text-white font-bold ml-2 text-sm md:text-base">LCD Expert</span>
                 </div>
             </div>
-            <div class="absolute bottom-40 right-10 hidden md:block animate-float delay-300">
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-xl">
-                    <span class="text-3xl">🔋</span>
-                    <span class="text-white font-bold ml-2">Battery Fix</span>
+            <div class="absolute bottom-32 right-4 md:bottom-40 md:right-10 animate-float delay-300 transform scale-75 md:scale-100 origin-bottom-right z-0 opacity-80 md:opacity-100">
+                <div class="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/20 shadow-xl">
+                    <span class="text-2xl md:text-3xl">🔋</span>
+                    <span class="text-white font-bold ml-2 text-sm md:text-base">Battery Fix</span>
                 </div>
             </div>
         </div>
