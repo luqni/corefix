@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Home;
+use App\Livewire\TicketTracking;
+
+Route::get('/', Home::class)->name('home');
+Route::get('/track/{id?}', TicketTracking::class)->name('tracking');
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', \App\Livewire\Admin\Dashboard::class)->name('dashboard');
+    Route::get('/orders', \App\Livewire\Admin\OrderList::class)->name('orders');
+    Route::get('/orders/create', \App\Livewire\Admin\CreateOrder::class)->name('orders.create');
+    Route::get('/tickets/{id}', \App\Livewire\Admin\TicketDetail::class)->name('tickets.show');
+    Route::get('/tickets/{id}/invoice', [\App\Http\Controllers\InvoiceController::class, 'show'])->name('tickets.invoice');
+    Route::get('/spareparts', \App\Livewire\Admin\SparepartList::class)->name('spareparts');
+});
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__.'/auth.php';
+
+Route::post('logout', function (\App\Livewire\Actions\Logout $logout) {
+    $logout();
+    return redirect('/');
+})->middleware('auth')->name('logout');
