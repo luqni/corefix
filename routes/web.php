@@ -7,7 +7,7 @@ use App\Livewire\TicketTracking;
 Route::get('/', Home::class)->name('home');
 Route::get('/track/{id?}', TicketTracking::class)->name('tracking');
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', \App\Livewire\Admin\Dashboard::class)->name('dashboard');
     Route::get('/orders', \App\Livewire\Admin\OrderList::class)->name('orders');
     Route::get('/orders/create', \App\Livewire\Admin\CreateOrder::class)->name('orders.create');

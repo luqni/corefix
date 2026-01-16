@@ -12,10 +12,11 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::firstOrCreate([
+        \App\Models\User::updateOrCreate([
             'email' => 'admin@corefix.id',
         ], [
             'name' => 'Admin Corefix',
+            'role' => 'admin',
             'password' => bcrypt('password'),
         ]);
     }
