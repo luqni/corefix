@@ -6,68 +6,88 @@ use App\Models\SparePart;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Layout;
+use App\Models\SparePartType; // Added this import
 
-#[Layout('layouts.admin', ['title' => 'Spare Parts Management'])]
+#[Layout('layouts.admin')]
 class SparepartList extends Component
 {
     use WithPagination;
 
-    public $showModal = false;
+    public $name, $price, $stock, $spare_part_type_id; // type removed from public property, using relation
     public $partId;
-    public $name;
-    public $type;
-    public $price;
-    public $stock = 0;
+    public $isModalOpen = false;
 
     protected $rules = [
-        'name' => 'required|min:3',
-        'type' => 'required',
-        'price' => 'required|numeric|min:0',
-        'stock' => 'required|integer|min:0',
+        'name' => 'required',
+        'spare_part_type_id' => 'required|exists:spare_part_types,id',
+        'price' => 'required|numeric',
+        'stock' => 'required|integer',
     ];
+
+    public function render()
+    {
+        return view('livewire.admin.sparepart-list', [
+            'parts' => SparePart::with('type')->paginate(10), // Eager load type
+            'types' => SparePartType::all(), // Pass types for dropdown
+            'title' => 'Spare Parts Inventory'
+        ]);
+    }
 
     public function create()
     {
-        $this->reset(['partId', 'name', 'type', 'price', 'stock']);
-        $this->showModal = true;
+        $this->resetInputFields();
+        $this->openModal();
+    }
+
+    public function openModal()
+    {
+        $this->isModalOpen = true;
+    }
+
+    public function closeModal()
+    {
+        $this->isModalOpen = false;
+        $this->resetInputFields();
+    }
+
+    private function resetInputFields()
+    {
+        $this->name = '';
+        $this->spare_part_type_id = null;
+        $this->price = '';
+        $this->stock = '';
+        $this->partId = null;
+    }
+
+    public function store()
+    {
+        $this->validate();
+
+        $type = SparePartType::find($this->spare_part_type_id);
+
+        SparePart::updateOrCreate(['id' => $this->partId], [
+            'name' => $this->name,
+            'spare_part_type_id' => $this->spare_part_type_id,
+            'type' => $type->name, // Keep syncing type string for now just in case
+            'price' => $this->price,
+            'stock' => $this->stock,
+        ]);
+
+        session()->flash('message', $this->partId ? 'Spare Part Updated Successfully.' : 'Spare Part Created Successfully.');
+
+        $this->closeModal();
     }
 
     public function edit($id)
     {
         $part = SparePart::findOrFail($id);
-        $this->partId = $part->id;
+        $this->partId = $id;
         $this->name = $part->name;
-        $this->type = $part->type;
+        $this->spare_part_type_id = $part->spare_part_type_id;
         $this->price = $part->price;
         $this->stock = $part->stock;
-        $this->showModal = true;
-    }
 
-    public function save()
-    {
-        $this->validate();
-
-        if ($this->partId) {
-            $part = SparePart::findOrFail($this->partId);
-            $part->update([
-                'name' => $this->name,
-                'type' => $this->type,
-                'price' => $this->price,
-                'stock' => $this->stock,
-            ]);
-            session()->flash('message', 'Spare part updated successfully.');
-        } else {
-            SparePart::create([
-                'name' => $this->name,
-                'type' => $this->type,
-                'price' => $this->price,
-                'stock' => $this->stock,
-            ]);
-            session()->flash('message', 'Spare part added successfully.');
-        }
-
-        $this->showModal = false;
-        $this->reset(['partId', 'name', 'type', 'price', 'stock']);
+        $this->openModal();
     }
 
     public function delete($id)
@@ -76,10 +96,5 @@ class SparepartList extends Component
         session()->flash('message', 'Spare part deleted successfully.');
     }
 
-    public function render()
-    {
-        return view('livewire.admin.sparepart-list', [
-            'parts' => SparePart::latest()->paginate(10),
-        ]);
-    }
+    // Removed duplicate render method
 }
