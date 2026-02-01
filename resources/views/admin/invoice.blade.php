@@ -75,7 +75,9 @@
             </tr>
         </thead>
         <tbody>
+            @php $calculatedSubtotal = 0; @endphp
             @foreach($ticket->items as $item)
+            @php $calculatedSubtotal += $item->price * $item->quantity; @endphp
             <tr>
                 <td>{{ $item->description }}</td>
                 <td class="text-center">{{ $item->quantity }}</td>
@@ -83,6 +85,20 @@
                 <td class="text-right">Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</td>
             </tr>
             @endforeach
+            
+            <!-- Subtotal -->
+            <tr>
+                <td colspan="3" class="text-right" style="border-top: 1px solid #eee; padding-top: 15px;"><strong>Subtotal</strong></td>
+                <td class="text-right" style="border-top: 1px solid #eee; padding-top: 15px;">Rp {{ number_format($calculatedSubtotal, 0, ',', '.') }}</td>
+            </tr>
+
+            <!-- Discount -->
+            @if($ticket->discount_amount > 0)
+            <tr>
+                <td colspan="3" class="text-right" style="color: #dc2626;">Discount {{ $ticket->coupon_code ? '('.$ticket->coupon_code.')' : '' }}</td>
+                <td class="text-right" style="color: #dc2626;">- Rp {{ number_format($ticket->discount_amount, 0, ',', '.') }}</td>
+            </tr>
+            @endif
             
             <tr class="total-row">
                 <td colspan="3" class="text-right">TOTAL</td>
@@ -93,8 +109,8 @@
 
     <div class="footer">
         <p>Thank you for trusting Corefix.id!</p>
-        <p>Garansi 90 hari untuk pergantian sparepart (S&K berlaku).</p>
-        <p>Jl. Jendral Sudirman No. Kav 52-53, Jakarta Selatan | +62 812-3456-7890</p>
+        <p>Garansi 10 hari untuk pergantian sparepart (S&K berlaku).</p>
+        <p>Dusun keong No.67, RT.01/RW.07, Siwelut, Pamutih, Kec. Ulujami, Kabupaten Pemalang, Jawa Tengah 52371 | +6289509045088</p>
     </div>
 
 </body>

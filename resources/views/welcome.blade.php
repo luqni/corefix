@@ -18,7 +18,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png') }}" alt="CoreFix" class="h-20 w-auto">
+                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-20 w-auto">
                 </div>
                 
                 <div class="hidden md:flex space-x-8 items-center md:ml-auto whitespace-nowrap">

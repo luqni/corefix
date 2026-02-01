@@ -18,7 +18,7 @@
             <div class="flex h-24 items-center">
                 <!-- Logo -->
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png') }}" alt="CoreFix" class="h-20 w-auto">
+                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-20 w-auto">
                 </div>
                 
                 <!-- Nav Links -->
@@ -49,7 +49,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
-                        <img src="{{ asset('logo.png') }}" alt="CoreFix" class="h-16 w-auto">
+                        <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-16 w-auto">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         Penyedia jasa service handphone terpercaya dengan standar kualitas tinggi dan garansi kepuasan pelanggan.
