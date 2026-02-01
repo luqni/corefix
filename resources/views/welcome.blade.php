@@ -1,15 +1,87 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth overflow-x-hidden">
+</head>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }} - Ahlinya Service Handphone</title>
+    <title>CoreFix - Jasa Service HP Panggilan Pemalang & Pekalongan</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jasa service HP panggilan terbaik di Pemalang, Pekalongan, dan sekitarnya. Ganti LCD, Baterai, Software, dan perbaikan lainnya. Teknisi profesional datang ke tempat Anda. Bergaransi!">
+    <meta name="keywords" content="service hp pemalang, service hp panggilan, ganti lcd, ganti baterai, service iphone pemalang, service android, teknisi hp, corefix">
+    <meta name="author" content="CoreFix.id">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Indonesian">
+    <meta name="geo.region" content="ID-JT" />
+    <meta name="geo.placename" content="Pemalang" />
+    <meta name="geo.position" content="-6.8921;109.3805" />
+    <meta name="ICBM" content="-6.8921, 109.3805" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
+    <meta property="og:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
+    <meta property="og:image" content="{{ asset('logo.png?v=3') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url('/') }}">
+    <meta property="twitter:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
+    <meta property="twitter:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
+    <meta property="twitter:image" content="{{ asset('logo.png?v=3') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet" />
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+
+    <!-- JSON-LD Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobilePhoneRepair",
+      "name": "CoreFix.id",
+      "image": "{{ asset('logo.png?v=3') }}",
+      "@id": "{{ url('/') }}",
+      "url": "{{ url('/') }}",
+      "telephone": "+6289509045088",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dusun keong No.67, RT.01/RW.07, Siwelut, Pamutih",
+        "addressLocality": "Ulujami",
+        "addressRegion": "Pemalang",
+        "postalCode": "52371",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.8530966,
+        "longitude": 109.5427463
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://instagram.com/corefix.id",
+        "https://facebook.com/corefix.id"
+      ]
+    }
+    </script>
 <body class="font-sans text-gray-900 antialiased bg-gray-50 overflow-x-hidden">
     <div class="relative w-full overflow-x-hidden">
 
