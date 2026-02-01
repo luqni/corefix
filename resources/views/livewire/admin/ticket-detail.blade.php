@@ -163,6 +163,22 @@
                                         <td colspan="5" class="px-2 py-4 text-center text-gray-400 italic">No items added yet.</td>
                                     </tr>
                                 @endforelse
+
+                                @if($ticket->discount_amount > 0)
+                                    <tr class="text-gray-600">
+                                        <td colspan="3" class="px-2 py-2 text-right">Subtotal</td>
+                                        <td class="px-2 py-2 text-right">{{ number_format($ticket->subtotal, 0, ',', '.') }}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="text-green-600">
+                                        <td colspan="3" class="px-2 py-2 text-right">
+                                            Discount <span class="text-xs bg-green-100 text-green-800 px-1 rounded uppercase">{{ $ticket->coupon_code }}</span>
+                                        </td>
+                                        <td class="px-2 py-2 text-right">- {{ number_format($ticket->discount_amount, 0, ',', '.') }}</td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+
                                 <tr class="bg-gray-50 font-bold text-gray-800">
                                     <td colspan="3" class="px-2 py-3 text-right">TOTAL</td>
                                     <td class="px-2 py-3 text-right">{{ number_format($ticket->total_cost, 0, ',', '.') }}</td>

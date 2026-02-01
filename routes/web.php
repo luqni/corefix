@@ -15,6 +15,7 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/tickets/{id}/invoice', [\App\Http\Controllers\InvoiceController::class, 'show'])->name('tickets.invoice');
     Route::get('/spareparts', \App\Livewire\Admin\SparepartList::class)->name('spareparts');
     Route::get('/spare-part-types', \App\Livewire\Admin\SparePartTypeList::class)->name('spare-part-types');
+    Route::get('/coupons', \App\Livewire\Admin\CouponList::class)->name('coupons');
 });
 
 Route::view('dashboard', 'dashboard')

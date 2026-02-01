@@ -56,6 +56,6 @@ class TicketTracking extends Component
 
     public function render()
     {
-        return view('livewire.ticket-tracking');
+        return view('livewire.ticket-tracking')->layout('layouts.landing');
     }
 }

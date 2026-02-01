@@ -21,6 +21,9 @@ class Ticket extends Model
         'payment_status',
         'payment_proof',
         'total_cost',
+        'coupon_code',
+        'discount_amount',
+        'subtotal',
     ];
 
     public function user()

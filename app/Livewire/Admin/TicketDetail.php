@@ -79,11 +79,30 @@ class TicketDetail extends Component
 
     public function recalculateTotal()
     {
-        $total = $this->ticket->items->sum(function ($item) {
+        $subtotal = $this->ticket->items->sum(function ($item) {
             return $item->price * $item->quantity;
         });
 
-        $this->ticket->update(['total_cost' => $total]);
+        $discount = 0;
+        if ($this->ticket->coupon_code) {
+           $coupon = \App\Models\Coupon::where('code', $this->ticket->coupon_code)->first();
+           if ($coupon) {
+               if ($coupon->type == 'fixed') {
+                   $discount = $coupon->value;
+               } else {
+                   $discount = ($subtotal * $coupon->value) / 100;
+               }
+           }
+        }
+
+        $total = max(0, $subtotal - $discount);
+
+        $this->ticket->update([
+            'subtotal' => $subtotal,
+            'discount_amount' => $discount,
+            'total_cost' => $total
+        ]);
+        
         $this->cost = $total;
     }
 

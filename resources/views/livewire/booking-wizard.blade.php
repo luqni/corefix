@@ -78,6 +78,18 @@
                     <textarea wire:model="address" class="w-full border p-2 rounded"></textarea>
                     @error('address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
+                 <div class="mb-4">
+                    <label class="block text-gray-700">Promo Code (Optional)</label>
+                    <div class="flex gap-2">
+                        <input type="text" wire:model="promoCode" class="w-full border p-2 rounded uppercase" placeholder="e.g. COREFIX20">
+                        <button type="button" wire:click="checkPromoCode" class="bg-secondary text-white px-4 rounded hover:bg-orange-600">Check</button>
+                    </div>
+                     @if($promoMessage)
+                        <span class="{{ $promoValid ? 'text-green-600' : 'text-red-500' }} text-sm block mt-1">
+                            {{ $promoMessage }}
+                        </span>
+                    @endif
+                </div>
             </div>
         @endif
 

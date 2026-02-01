@@ -1,236 +1,211 @@
-<div class="space-y-12">
-    <!-- Custom Animations -->
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-    </style>
-
+<div>
     <!-- Hero Section -->
-    <div class="relative bg-gradient-to-r from-blue-900 to-indigo-900 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0">
-             <div class="absolute inset-0 bg-indigo-900 opacity-50"></div>
-             <!-- Decorative Shape -->
-             <svg class="absolute bottom-0 left-0 transform translate-y-10" width="100%" height="200" fill="none" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0V224Z"></path>
-             </svg>
-        </div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-            <div class="text-center animate-fade-in-up">
-                <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl mb-6">
-                    <span class="block">Professional Gadget Repair</span>
-                    <span class="block text-indigo-300 mt-2">Tanpa Keluar Rumah</span>
-                </h1>
-                <p class="mt-3 max-w-md mx-auto text-base text-gray-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl delay-100 opacity-0 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10 animate-fade-in-up">
-                    Layanan service HP panggilan #1. Teknisi ahli kami datang ke tempat Anda. Cepat, Aman, dan Bergaransi.
-                </p>
-                <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center delay-200 opacity-0 animate-fade-in-up">
-                    <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                        <a href="#booking" class="flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-indigo-700 bg-white hover:bg-indigo-50 hover:shadow-lg hover:scale-105 transition transform duration-300 md:text-lg md:px-10">
-                            Booking Sekarang
+    <section class="relative bg-white overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-32 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-primary font-semibold text-sm mb-6">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                        </span>
+                        Service HP Bergaransi & Terpercaya
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Solusi Masalah <br/>
+                        <span class="text-secondary">Smartphone</span> Kamu
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
+                        Layanan perbaikan smartphone profesional dengan teknisi tersertifikasi. Cepat, transparan, dan bergaransi. Layanan service HP panggilan #1 Cek Segera!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#booking" class="inline-flex justify-center items-center px-8 py-4 bg-secondary text-white font-bold rounded-xl shadow-xl shadow-secondary/20 hover:bg-orange-600 hover:-translate-y-1 transition transform">
+                            Order Sekarang
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
-                        <a href="{{ route('tracking') }}" class="flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-indigo-600/50 hover:bg-indigo-700/50 backdrop-blur-md border-indigo-400 hover:shadow-lg transition md:text-lg md:px-10">
-                             Lacak Status
+                        <a href="#services" class="inline-flex justify-center items-center px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border border-gray-200 hover:border-primary hover:text-primary transition">
+                            Lihat Layanan
                         </a>
                     </div>
+                    <div class="mt-8 flex items-center justify-center md:justify-start gap-6 text-sm text-gray-500 font-medium">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Sparepart Original
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Pengerjaan Cepat
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Floating Stats/Icons -->
-            <!-- Floating Stats/Icons -->
-            <div class="absolute top-4 left-4 md:top-10 md:left-10 animate-float transform scale-75 md:scale-100 origin-top-left z-0 opacity-80 md:opacity-100">
-                <div class="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/20 shadow-xl">
-                    <span class="text-2xl md:text-3xl">📱</span>
-                    <span class="text-white font-bold ml-2 text-sm md:text-base">LCD Expert</span>
-                </div>
-            </div>
-            <div class="absolute bottom-32 right-4 md:bottom-40 md:right-10 animate-float delay-300 transform scale-75 md:scale-100 origin-bottom-right z-0 opacity-80 md:opacity-100">
-                <div class="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/20 shadow-xl">
-                    <span class="text-2xl md:text-3xl">🔋</span>
-                    <span class="text-white font-bold ml-2 text-sm md:text-base">Battery Fix</span>
+                <div class="relative hidden md:block">
+                     <!-- Illustration/Image Placeholder -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border-4 border-white aspect-[4/3]">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gray-800 text-gray-500">
+                             <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1000&auto=format&fit=crop" alt="Teknisi Service HP" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700">
+                             <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                             <div class="absolute bottom-6 left-6 text-white text-left">
+                                <div class="font-bold text-xl">Teknisi Profesional</div>
+                                <div class="text-sm opacity-80">Siap membantu masalah gadgetmu</div>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -z-10 top-10 -right-10 w-24 h-24 bg-secondary/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -z-10 -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Features / Why Us -->
-    <div class="bg-gray-50 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Kenapa Corefix?</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Solusi Terbaik untuk Gadget Anda</p>
-            </div>
+    </section>
 
-            <div class="mt-10">
-                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    <!-- Feature 1 -->
-                    <div class="flex items-center space-x-4 p-6 bg-white rounded-lg shadow-sm">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Pengerjaan Cepat</h3>
-                            <p class="mt-2 text-sm text-gray-500">Bisa ditunggu untuk kerusakan ringan seperti ganti LCD & Baterai.</p>
-                        </div>
+    <!-- Promo Section -->
+    <section id="promo" class="py-12 bg-secondary relative overflow-hidden">
+        <div class="absolute inset-0 bg-pattern opacity-10"></div> <!-- Optional pattern -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                 <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-400 rounded-full blur-3xl -z-0 opacity-50"></div>
+                 <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-400 rounded-full blur-3xl -z-0 opacity-20"></div>
+                 
+                <div class="text-center md:text-left relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-2">PROMO SPESIAL! 🎉</h2>
+                    <p class="text-lg text-gray-600 mb-4">Dapatkan potongan harga <span class="font-bold text-red-500">20%</span> untuk service LCD & Baterai.</p>
+                    <div class="inline-block bg-gray-100 rounded-lg px-4 py-2 border border-dashed border-gray-400">
+                        <span class="text-gray-500 text-sm mr-2">Kode Promo:</span>
+                        <span class="font-mono font-bold text-xl text-primary tracking-wider">COREFIX20</span>
                     </div>
-
-                    <!-- Feature 2 -->
-                    <div class="flex items-center space-x-4 p-6 bg-white rounded-lg shadow-sm">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Bergaransi</h3>
-                            <p class="mt-2 text-sm text-gray-500">Garansi servis hingga 90 hari untuk kenyamanan Anda.</p>
-                        </div>
-                    </div>
-
-                    <!-- Feature 3 -->
-                    <div class="flex items-center space-x-4 p-6 bg-white rounded-lg shadow-sm">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Home Service</h3>
-                            <p class="mt-2 text-sm text-gray-500">Kami datang ke tempat Anda. Hemat waktu, tidak perlu macet.</p>
-                        </div>
-                    </div>
+                    <p class="text-xs text-gray-400 mt-2">*Syarat & ketentuan berlaku. Terbatas untuk 50 orang pertama.</p>
+                </div>
+                <div class="relative z-10 shrink-0">
+                    <a href="?promo=COREFIX20#booking" class="inline-flex justify-center items-center px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-900 hover:scale-105 transition transform text-lg">
+                        Klaim Promo Sekarang
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Services Grid -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-8">Layanan Kami</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white p-4 rounded-xl shadow border text-center hover:border-indigo-500 transition cursor-pointer">
-                <span class="text-4xl">📱</span>
-                <h3 class="font-bold mt-2">Ganti LCD</h3>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow border text-center hover:border-indigo-500 transition cursor-pointer">
-                <span class="text-4xl">🔋</span>
-                <h3 class="font-bold mt-2">Ganti Baterai</h3>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow border text-center hover:border-indigo-500 transition cursor-pointer">
-                <span class="text-4xl">💧</span>
-                <h3 class="font-bold mt-2">Kemasukan Air</h3>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow border text-center hover:border-indigo-500 transition cursor-pointer">
-                <span class="text-4xl">🔌</span>
-                <h3 class="font-bold mt-2">Konektor Cas</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Process / How it Works -->
-    <div class="py-16 bg-white overflow-hidden">
+    <section id="services" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Cara Kerja</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Service HP Semudah 1-2-3</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Layanan Kami</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Apa masalah handphone kamu?</h3>
+                <p class="text-gray-600">Kami menangani berbagai kerusakan hardware dan software dengan peralatan lengkap.</p>
             </div>
-            <div class="relative">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-200"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Ganti LCD / Layar</h4>
+                    <p class="text-gray-500 mb-6">Layar pecah, retak, atau touchscreen tidak responsif? Kami ganti dengan sparepart berkualitas.</p>
+                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                        Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
                 </div>
-                <div class="relative flex justify-between">
-                    <div class="bg-white px-4 text-center">
-                        <span class="h-12 w-12 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xl font-bold mx-auto mb-2">1</span>
-                        <h3 class="text-lg font-medium text-gray-900">Booking Online</h3>
-                        <p class="text-sm text-gray-500 max-w-xs mx-auto">Isi formulir keluhan dan jadwal service di website ini.</p>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                     </div>
-                    <div class="bg-white px-4 text-center">
-                        <span class="h-12 w-12 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xl font-bold mx-auto mb-2">2</span>
-                        <h3 class="text-lg font-medium text-gray-900">Teknisi Datang</h3>
-                        <p class="text-sm text-gray-500 max-w-xs mx-auto">Teknisi kami datang ke rumah/kantor Anda untuk perbaikan.</p>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Ganti Baterai</h4>
+                    <p class="text-gray-500 mb-6">Baterai cepat habis, kembung, atau hp sering mati sendiri? Saatnya ganti baterai baru.</p>
+                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                        Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
+                   <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
-                    <div class="bg-white px-4 text-center">
-                        <span class="h-12 w-12 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xl font-bold mx-auto mb-2">3</span>
-                        <h3 class="text-lg font-medium text-gray-900">Selesai & Bergaransi</h3>
-                        <p class="text-sm text-gray-500 max-w-xs mx-auto">Bayar setelah selesai. Garansi 90 hari untuk ketenangan Anda.</p>
-                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Software & Unlock</h4>
+                    <p class="text-gray-500 mb-6">Lupa pola/sandi, bootloop, hang logo, atau ingin upgrade OS? Kami bisa bantu.</p>
+                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                        Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Testimonials -->
-    <section class="py-12 bg-indigo-800 text-white overflow-hidden">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Apa Kata Mereka?</h2>
-                <p class="mt-4 text-lg text-indigo-200">Ribuan pelanggan puas dengan layanan Corefix.</p>
+    <!-- About Us -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Tentang Kami</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Mitra Terpercaya untuk Perbaikan Gadget Anda</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        CoreFix hadir sebagai solusi untuk segala masalah smartphone Anda. Kami mengerti betapa pentingnya gadget dalam produktivitas sehari-hari. Oleh karena itu, kami berkomitmen memberikan layanan perbaikan yang cepat, transparan, dan berkualitas tinggi.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Didukung oleh tim teknisi yang berpengalaman dan tersertifikasi, serta penggunaan sparepart original, kami menjamin kepuasan setiap pelanggan. Mulai dari ganti LCD, baterai, hingga perbaikan mesin, kami siap membantu.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-primary">5+</span>
+                            <span class="text-sm text-gray-500">Tahun Pengalaman</span>
+                        </div>
+                         <div class="h-12 w-px bg-gray-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-primary">10k+</span>
+                            <span class="text-sm text-gray-500">Device Diperbaiki</span>
+                        </div>
+                        <div class="h-12 w-px bg-gray-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-bold text-primary">99%</span>
+                            <span class="text-sm text-gray-500">Pelanggan Puas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop" alt="Tim CoreFix" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-[4/3]">
+                    <div class="absolute -top-6 -right-6 w-2/3 h-2/3 bg-blue-50 rounded-2xl -z-0"></div>
+                    <div class="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 w-full h-full bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-indigo-900 rounded-xl p-6 shadow-xl border border-indigo-700">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 flex">★★★★★</div>
-                    </div>
-                    <p class="text-indigo-100 italic mb-4">"Awalnya ragu service panggilan, tapi ternyata teknisinya profesional banget. Ganti LCD iPhone 11 cuma 20 menit kelar di depan mata. Rekomen!"</p>
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold">AD</div>
-                        <div class="ml-3">
-                            <h3 class="text-sm font-medium text-white">Andi Darmawan</h3>
-                            <p class="text-xs text-indigo-300">Jakarta Selatan</p>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="{{ asset('ilustrasi1.png') }}" alt="Quality Service" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-square">
+                    <div class="absolute -bottom-6 -right-6 w-2/3 h-2/3 bg-gray-100 rounded-2xl -z-0"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-secondary/10 rounded-full blur-3xl -z-10"></div>
                 </div>
-                 <!-- Testimonial 2 -->
-                <div class="bg-indigo-900 rounded-xl p-6 shadow-xl border border-indigo-700">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 flex">★★★★★</div>
-                    </div>
-                    <p class="text-indigo-100 italic mb-4">"Service center resmi antriannya panjang. Di Corefix sat set sat set, harga transparan, teknisi ramah. HP saya hidup lagi!"</p>
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold">SP</div>
-                        <div class="ml-3">
-                            <h3 class="text-sm font-medium text-white">Siti Putri</h3>
-                            <p class="text-xs text-indigo-300">Tangerang</p>
+                <div>
+                     <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Kenapa Memilih Kami?</h2>
+                     <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Standar Kualitas Tertinggi untuk Gadget Kesayanganmu</h3>
+                     <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-primary">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Teknisi Tersertifikasi</h4>
+                                <p class="text-gray-600 mt-1">Ditangani oleh ahli yang berpengalaman menangani berbagai tipe smartphone.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                 <!-- Testimonial 3 -->
-                <div class="bg-indigo-900 rounded-xl p-6 shadow-xl border border-indigo-700">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 flex">★★★★★</div>
-                    </div>
-                    <p class="text-indigo-100 italic mb-4">"Solusi banget buat yang sibuk kerja. Orang kantor saya sekarang kalau ada gadget rusak pasti panggil Corefix. Mantap!"</p>
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold">RZ</div>
-                        <div class="ml-3">
-                            <h3 class="text-sm font-medium text-white">Reza Zulkarnain</h3>
-                            <p class="text-xs text-indigo-300">Jakarta Pusat</p>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-primary">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Pengerjaan Cepat</h4>
+                                <p class="mt-1 text-gray-600">Bisa ditunggu untuk kerusakan ringan. Kami menghargai waktumu.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -238,55 +213,140 @@
         </div>
     </section>
 
-    <!-- Location & Contact -->
-    <div class="bg-gray-50 py-16">
+    <!-- Process / How it Works -->
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Hubungi Kami</h2>
-                    <div class="space-y-4 text-lg text-gray-600">
-                        <p class="flex items-center">
-                            <span class="mr-4 text-2xl">📍</span>
-                            <span>Jl Akasia Raya, Desa Pamutih, Kecamatan Ulujami, Kabupaten Pemalang, jawa Tengah</span>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="mr-4 text-2xl">⏰</span>
-                            <span>Senin - Minggu: 09:00 - 21:00 WIB</span>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="mr-4 text-2xl">📞</span>
-                            <span>+62 812-3456-7890 (WhatsApp Available)</span>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="mr-4 text-2xl">✉️</span>
-                            <span>support@corefix.id</span>
-                        </p>
+            <div class="text-center mb-16">
+                <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Cara Kerja</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Service Panggilan</h3>
+            </div>
+
+            <div class="relative">
+                 <!-- Connecting Line (Hidden on mobile) -->
+                <div class="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gray-200 -z-0" style="top: 2rem;"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <!-- Step 1 -->
+                    <div class="relative bg-gray-50 md:bg-transparent">
+                        <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-6 relative z-10 tracking-widest">1</div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Booking Online</h4>
+                        <p class="text-gray-600 px-4 leading-relaxed">Isi formulir keluhan dan jadwal service di website ini.</p>
                     </div>
-                    <div class="mt-8">
-                         <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
-                            Chat via WhatsApp
-                         </a>
+
+                    <!-- Step 2 -->
+                    <div class="relative bg-gray-50 md:bg-transparent">
+                         <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-6 relative z-10 tracking-widest">2</div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Teknisi Datang</h4>
+                        <p class="text-gray-600 px-4 leading-relaxed">Teknisi kami datang ke rumah/kantor Anda untuk perbaikan.</p>
                     </div>
-                </div>
-                <div class="bg-white p-2 rounded-lg shadow-lg">
-                    <!-- Placeholder Map -->
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center h-64">
-                         <span class="text-gray-400 font-bold">Google Maps Embed Placeholder</span>
+
+                    <!-- Step 3 -->
+                    <div class="relative bg-gray-50 md:bg-transparent">
+                         <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-6 relative z-10 tracking-widest">3</div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Selesai & Bergaransi</h4>
+                        <p class="text-gray-600 px-4 leading-relaxed">Bayar setelah selesai. Garansi 90 hari untuk ketenangan Anda.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Booking Section -->
-    <div id="booking" class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-900">Mulai Perbaikan</h2>
-                <p class="mt-4 text-lg text-gray-500">Isi formulir di bawah, teknisi kami akan segera menghubungi Anda.</p>
+    <section id="booking" class="bg-gray-900 py-16 text-white relative">
+        <div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold mb-4">Mulai Perbaikan</h2>
+                <p class="text-lg text-gray-400">Isi formulir di bawah ini, teknisi kami akan segera menghubungi Anda.</p>
             </div>
             
-            <livewire:booking-wizard />
+            <div class="bg-white rounded-2xl p-6 md:p-10 shadow-2xl overflow-hidden text-gray-900">
+                <livewire:booking-wizard />
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Testimoni</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Apa Kata Pelanggan Kami?</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-blue-50 p-8 rounded-2xl relative">
+                    <svg class="w-10 h-10 text-primary/20 absolute top-6 right-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.929 15.088C15.539 14.252 16.353 13.628 17.373 13.216V12.784H14.017V8H22V13.84C22 15.895 21.282 17.653 19.845 19.114C18.408 20.575 16.466 21.305 14.017 21ZM5 21L5 18C5 16.896 5.304 15.925 5.912 15.088C6.522 14.252 7.336 13.628 8.355 13.216V12.784H5V8H12.983V13.84C12.983 15.895 12.265 17.653 10.828 19.114C9.391 20.575 7.448 21.305 5 21Z"/></svg>
+                    <div class="flex items-center gap-1 text-orange-400 mb-4">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Awalnya ragu service panggilan, tapi ternyata teknisinya profesional banget. Ganti LCD iPhone 11 cuma 20 menit kelar di depan mata. Rekomen!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">AD</div>
+                        <div>
+                            <h5 class="text-gray-900 font-bold text-sm">Andi Darmawan</h5>
+                            <p class="text-gray-500 text-xs">Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-blue-50 p-8 rounded-2xl relative">
+                    <svg class="w-10 h-10 text-primary/20 absolute top-6 right-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.929 15.088C15.539 14.252 16.353 13.628 17.373 13.216V12.784H14.017V8H22V13.84C22 15.895 21.282 17.653 19.845 19.114C18.408 20.575 16.466 21.305 14.017 21ZM5 21L5 18C5 16.896 5.304 15.925 5.912 15.088C6.522 14.252 7.336 13.628 8.355 13.216V12.784H5V8H12.983V13.84C12.983 15.895 12.265 17.653 10.828 19.114C9.391 20.575 7.448 21.305 5 21Z"/></svg>
+                    <div class="flex items-center gap-1 text-orange-400 mb-4">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"HP saya matot karena air, diagnosa di tempat lain harus ganti mesin mahal banget. Di CoreFix diperiksa detail, ternyata cuma IC power. Hemat jutaan!"</p>
+                    <div class="flex items-center gap-3">
+                         <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">SP</div>
+                        <div>
+                            <h5 class="text-gray-900 font-bold text-sm">Siti Putri</h5>
+                            <p class="text-gray-500 text-xs">Tangerang</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-blue-50 p-8 rounded-2xl relative">
+                    <svg class="w-10 h-10 text-primary/20 absolute top-6 right-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.929 15.088C15.539 14.252 16.353 13.628 17.373 13.216V12.784H14.017V8H22V13.84C22 15.895 21.282 17.653 19.845 19.114C18.408 20.575 16.466 21.305 14.017 21ZM5 21L5 18C5 16.896 5.304 15.925 5.912 15.088C6.522 14.252 7.336 13.628 8.355 13.216V12.784H5V8H12.983V13.84C12.983 15.895 12.265 17.653 10.828 19.114C9.391 20.575 7.448 21.305 5 21Z"/></svg>
+                    <div class="flex items-center gap-1 text-orange-400 mb-4">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Solusi banget buat yang sibuk kerja. Orang kantor saya sekarang kalau ada gadget rusak pasti panggil Corefix. Pelayanannya ramah dan hasil memuaskan."</p>
+                    <div class="flex items-center gap-3">
+                         <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">RZ</div>
+                        <div>
+                            <h5 class="text-gray-900 font-bold text-sm">Reza Zulkarnain</h5>
+                            <p class="text-gray-500 text-xs">Jakarta Pusat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Location / Map -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Lokasi</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Kunjungi Workshop Kami</h3>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.3124872160915!2d109.54274628628313!3d-6.853096575470851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fd9f220d7a79d%3A0xaae1b5668f900a39!2sCoreFix%20Service!5e0!3m2!1sid!2sid!4v1769920306858!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-xl"></iframe>
+            </div>
+        </div>
+    </section>
 </div>

@@ -23,6 +23,18 @@ class BookingWizard extends Component
     public $whatsapp = '';
     public $address = '';
 
+    public $promoCode = '';
+    public $promoValid = false;
+    public $promoMessage = '';
+
+    public function mount()
+    {
+        if (request()->has('promo')) {
+            $this->promoCode = request()->query('promo');
+            $this->checkPromoCode();
+        }
+    }
+
     protected $rules = [
         1 => [
             'brand' => 'required|min:2',
@@ -36,8 +48,30 @@ class BookingWizard extends Component
             'name' => 'required|min:3',
             'whatsapp' => 'required|numeric|min_digits:10',
             'address' => 'required|min:5',
+            'promoCode' => 'nullable|string',
         ],
     ];
+
+    public function checkPromoCode()
+    {
+        if (empty($this->promoCode)) {
+            $this->promoMessage = '';
+            $this->promoValid = false;
+            return;
+        }
+
+        $code = strtoupper($this->promoCode);
+        $coupon = \App\Models\Coupon::where('code', $code)->first();
+
+        if ($coupon && $coupon->isValid()) {
+            $this->promoValid = true;
+            $type = $coupon->type === 'fixed' ? 'Rp '.number_format($coupon->value) : $coupon->value.'%';
+            $this->promoMessage = "Coupon applied! Discount: $type";
+        } else {
+            $this->promoValid = false;
+            $this->promoMessage = 'Invalid or expired coupon code.';
+        }
+    }
 
     public function nextStep()
     {
@@ -54,20 +88,34 @@ class BookingWizard extends Component
     {
         $this->validate($this->rules[3]);
 
+        // Re-validate promo code if entered
+        $couponCodeToSave = null;
+        if ($this->promoCode) {
+            $this->checkPromoCode();
+            if ($this->promoValid) {
+                $couponCodeToSave = strtoupper($this->promoCode);
+                // Increment usage
+                $coupon = \App\Models\Coupon::where('code', $couponCodeToSave)->first();
+                if ($coupon) {
+                    $coupon->increment('used_count');
+                }
+            }
+        }
+
         $ticket = Ticket::create([
             'customer_name' => $this->name,
             'customer_wa' => $this->whatsapp,
             'customer_address' => $this->address,
             'device_model' => "$this->brand $this->model",
             'issue_description' => $this->issue,
-            'status' => 'pending', // Initial status
+            'status' => 'pending', 
             'payment_status' => 'unpaid',
+            'coupon_code' => $couponCodeToSave,
         ]);
 
-        // Create log
         $ticket->logs()->create([
             'new_status' => 'pending',
-            'notes' => 'Ticket created via Booking Wizard.',
+            'notes' => 'Ticket created via Booking Wizard.' . ($couponCodeToSave ? " Coupon: $couponCodeToSave" : ''),
         ]);
 
         return redirect()->route('tracking', ['id' => $ticket->id]);
