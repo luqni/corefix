@@ -118,7 +118,7 @@
 
     <div class="footer">
         <p><strong>CoreFix Service</strong></p>
-        <p>Dusun Keong No.67, RT.01/RW.07, Siwelut, Pamutih, Kec. Ulujami, Kabupaten Pemalang, Jawa Tengah 52371</p>
+        <p>Jl. Tamtama, kendayaan, Penyangkringan, Kec. Weleri, Kabupaten Kendal, Jawa Tengah 51355</p>
         <p class="warranty-note">Terimakasih telah mempercayakan perbaikan perangkat Anda kepada kami. Garansi berlaku sesuai ketentuan yang diberikan. Kerusakan akibat jatuh, terkena air atau human error tidak termasuk garansi.</p>
     </div>
 
