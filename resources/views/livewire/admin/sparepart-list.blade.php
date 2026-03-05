@@ -22,7 +22,9 @@
                         <tr class="bg-gray-50 uppercase text-xs font-bold text-gray-500 border-b">
                             <th class="p-4 tracking-wider">Item Name</th>
                             <th class="p-4 tracking-wider">Type / Category</th>
+                            <th class="p-4 tracking-wider">Capital (IDR)</th>
                             <th class="p-4 tracking-wider">Price (IDR)</th>
+                            <th class="p-4 tracking-wider">Net Profit</th>
                             <th class="p-4 tracking-wider">Stock</th>
                             <th class="p-4 tracking-wider text-right">Actions</th>
                         </tr>
@@ -36,7 +38,9 @@
                                         {{ $part->type->name ?? $part->type }}
                                     </span>
                                 </td>
+                                <td class="p-4 text-sm font-mono text-gray-500">Rp {{ number_format($part->capital_price, 0, ',', '.') }}</td>
                                 <td class="p-4 text-sm font-mono text-gray-700">Rp {{ number_format($part->price, 0, ',', '.') }}</td>
+                                <td class="p-4 text-sm font-mono font-bold text-green-600">Rp {{ number_format($part->price - $part->capital_price, 0, ',', '.') }}</td>
                                 <td class="p-4 text-sm">
                                     <span class="{{ $part->stock > 0 ? 'text-green-600' : 'text-red-600 font-bold' }}">
                                         {{ $part->stock }}
@@ -49,7 +53,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="p-8 text-center text-gray-500 italic">No spare parts found. Start by adding one.</td>
+                                <td colspan="7" class="p-8 text-center text-gray-500 italic">No spare parts found. Start by adding one.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -98,15 +102,20 @@
                                         </div>
                                         <div class="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label class="block text-sm font-medium text-gray-700">Price (IDR)</label>
+                                                <label class="block text-sm font-medium text-gray-700">Capital Price (IDR)</label>
+                                                <input type="number" wire:model="capital_price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                                @error('capital_price') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Selling Price (IDR)</label>
                                                 <input type="number" wire:model="price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                                 @error('price') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                             </div>
-                                            <div>
-                                                <label class="block text-sm font-medium text-gray-700">Stock</label>
-                                                <input type="number" wire:model="stock" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                @error('stock') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Stock</label>
+                                            <input type="number" wire:model="stock" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                            @error('stock') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>

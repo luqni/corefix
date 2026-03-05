@@ -13,13 +13,14 @@ class SparepartList extends Component
 {
     use WithPagination;
 
-    public $name, $price, $stock, $spare_part_type_id; // type removed from public property, using relation
+    public $name, $capital_price, $price, $stock, $spare_part_type_id; // type removed from public property, using relation
     public $partId;
     public $isModalOpen = false;
 
     protected $rules = [
         'name' => 'required',
         'spare_part_type_id' => 'required|exists:spare_part_types,id',
+        'capital_price' => 'required|numeric',
         'price' => 'required|numeric',
         'stock' => 'required|integer',
     ];
@@ -54,6 +55,7 @@ class SparepartList extends Component
     {
         $this->name = '';
         $this->spare_part_type_id = null;
+        $this->capital_price = '';
         $this->price = '';
         $this->stock = '';
         $this->partId = null;
@@ -69,6 +71,7 @@ class SparepartList extends Component
             'name' => $this->name,
             'spare_part_type_id' => $this->spare_part_type_id,
             'type' => $type->name, // Keep syncing type string for now just in case
+            'capital_price' => $this->capital_price,
             'price' => $this->price,
             'stock' => $this->stock,
         ]);
@@ -84,6 +87,7 @@ class SparepartList extends Component
         $this->partId = $id;
         $this->name = $part->name;
         $this->spare_part_type_id = $part->spare_part_type_id;
+        $this->capital_price = $part->capital_price;
         $this->price = $part->price;
         $this->stock = $part->stock;
 

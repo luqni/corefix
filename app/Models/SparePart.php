@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SparePart extends Model
 {
-    protected $fillable = ['name', 'type', 'spare_part_type_id', 'price', 'stock'];
+    protected $fillable = ['name', 'type', 'spare_part_type_id', 'capital_price', 'price', 'stock'];
 
     public function type()
     {

@@ -59,10 +59,23 @@ class TicketDetail extends Component
             'newItemQty' => 'required|integer|min:1',
         ]);
 
+        $capitalPrice = 0;
+        $isSparePart = false;
+
+        if ($this->selectedPartId) {
+            $part = SparePart::find($this->selectedPartId);
+            if ($part) {
+                $capitalPrice = $part->capital_price;
+                $isSparePart = true;
+            }
+        }
+
         $this->ticket->items()->create([
             'description' => $this->newItemDescription,
             'price' => $this->newItemPrice,
             'quantity' => $this->newItemQty,
+            'capital_price' => $capitalPrice,
+            'is_spare_part' => $isSparePart,
         ]);
 
         $this->recalculateTotal();
