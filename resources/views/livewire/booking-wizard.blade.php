@@ -21,18 +21,18 @@
             <div>
                 <h2 class="text-xl font-bold mb-4">Device Information</h2>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Brand (cth. Iphone)</label>
-                    <input type="text" wire:model="brand" class="w-full border p-2 rounded">
+                    <label class="block text-gray-700">Brand</label>
+                    <input type="text" wire:model="brand" class="w-full border p-2 rounded" placeholder="cth. Iphone">
                     @error('brand') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Model (cth. Iphone 14 Pro Max)</label>
-                    <input type="text" wire:model="model" class="w-full border p-2 rounded">
+                    <label class="block text-gray-700">Model</label>
+                    <input type="text" wire:model="model" class="w-full border p-2 rounded" placeholder="cth. Iphone 14 Pro Max">
                     @error('model') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Issue Description (cth. LCD Pecah)</label>
-                    <textarea wire:model="issue" class="w-full border p-2 rounded"></textarea>
+                    <label class="block text-gray-700">Issue Description</label>
+                    <textarea wire:model="issue" class="w-full border p-2 rounded" placeholder="cth. LCD Pecah"></textarea>
                     @error('issue') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
             </div>

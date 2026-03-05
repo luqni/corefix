@@ -43,7 +43,7 @@
                      <!-- Illustration/Image Placeholder -->
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border-4 border-white aspect-[4/3]">
                         <div class="absolute inset-0 flex items-center justify-center bg-gray-800 text-gray-500">
-                             <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1000&auto=format&fit=crop" alt="Teknisi Service HP" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700">
+                             <img src="{{ asset('mesin iphone.png?v=4') }}?q=80&w=1000&auto=format&fit=crop" alt="Teknisi Service HP" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700">
                              <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
                              <div class="absolute bottom-6 left-6 text-white text-left">
                                 <div class="font-bold text-xl">Teknisi Profesional</div>

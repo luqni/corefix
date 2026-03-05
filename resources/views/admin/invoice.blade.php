@@ -47,7 +47,7 @@
 
     <div class="header">
         <div class="logo">
-            <img src="{{ asset('logo.png?v=4') }}" alt="CoreFix Logo">
+            <img src="{{ asset('logo.png?v=5') }}" alt="CoreFix Logo">
             <p><strong>CoreFix Service</strong><br>
             Professional Gadget Repair<br>
             +62 895-0904-5088</p>

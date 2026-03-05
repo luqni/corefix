@@ -22,14 +22,14 @@
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
     <meta property="og:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
-    <meta property="og:image" content="{{ asset('logo.png?v=4') }}">
+    <meta property="og:image" content="{{ asset('logo.png?v=5') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url('/') }}">
     <meta property="twitter:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
     <meta property="twitter:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
-    <meta property="twitter:image" content="{{ asset('logo.png?v=4') }}">
+    <meta property="twitter:image" content="{{ asset('logo.png?v=5') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -44,7 +44,7 @@
       "@context": "https://schema.org",
       "@type": "MobilePhoneRepair",
       "name": "CoreFix.id",
-      "image": "{{ asset('logo.png?v=4') }}",
+      "image": "{{ asset('logo.png?v=5') }}",
       "@id": "{{ url('/') }}",
       "url": "{{ url('/') }}",
       "telephone": "+6289509045088",
@@ -90,7 +90,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between py-4 md:py-6 items-center">
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png?v=4') }}" alt="CoreFix" class="h-28 md:h-36 w-auto">
+                    <img src="{{ asset('logo.png?v=5') }}" alt="CoreFix" class="h-28 md:h-36 w-auto">
                 </div>
                 
                 <div class="hidden md:flex space-x-8 items-center md:ml-auto whitespace-nowrap">
@@ -365,7 +365,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
-                        <img src="{{ asset('logo.png?v=4') }}" alt="CoreFix" class="h-24 md:h-28 w-auto">
+                        <img src="{{ asset('logo.png?v=5') }}" alt="CoreFix" class="h-24 md:h-28 w-auto">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         Penyedia jasa service handphone terpercaya dengan standar kualitas tinggi dan garansi kepuasan pelanggan.
