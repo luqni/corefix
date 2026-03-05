@@ -31,7 +31,8 @@
         .warranty-note { font-style: italic; color: #777; margin-top: 15px !important; font-size: 11px; }
         
         @media print {
-            body { padding: 0; max-width: 100%; }
+            @page { margin: 0; }
+            body { padding: 2cm; max-width: 100%; }
             .no-print { display: none; }
             .header { border-bottom-color: #2267BC !important; }
             th { border-bottom-color: #2267BC !important; background-color: #f8f9fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
