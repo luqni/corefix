@@ -88,9 +88,9 @@
     <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+            <div class="flex justify-between py-4 md:py-6 items-center">
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-20 w-auto">
+                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-28 md:h-36 w-auto">
                 </div>
                 
                 <div class="hidden md:flex space-x-8 items-center md:ml-auto whitespace-nowrap">
@@ -223,7 +223,7 @@
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">Ganti LCD / Layar</h4>
-                    <p class="text-gray-500 mb-6">Layar pecah, retak, atau touchscreen tidak responsif? Kami ganti dengan sparepart berkualitas.</p>
+                    <p class="text-gray-500 mb-6">!Layar pecah, retak, atau touchscreen tidak responsif? Kami ganti dengan sparepart berkualitas.</p>
                     <a href="#" class="text-primary font-semibold hover:text-green-700 flex items-center">
                         Selengkapnya <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
@@ -364,9 +364,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-6">
-                        <x-application-logo class="h-8 w-8 text-primary" />
-                        <span class="text-xl font-bold text-gray-900">CoreFix</span>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
+                        <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-24 md:h-28 w-auto">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         Penyedia jasa service handphone terpercaya dengan standar kualitas tinggi dan garansi kepuasan pelanggan.

@@ -21,17 +21,17 @@
             <div>
                 <h2 class="text-xl font-bold mb-4">Device Information</h2>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Brand</label>
+                    <label class="block text-gray-700">Brand (cth. Iphone)</label>
                     <input type="text" wire:model="brand" class="w-full border p-2 rounded">
                     @error('brand') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Model</label>
+                    <label class="block text-gray-700">Model (cth. Iphone 14 Pro Max)</label>
                     <input type="text" wire:model="model" class="w-full border p-2 rounded">
                     @error('model') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Issue Description</label>
+                    <label class="block text-gray-700">Issue Description (cth. LCD Pecah)</label>
                     <textarea wire:model="issue" class="w-full border p-2 rounded"></textarea>
                     @error('issue') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
@@ -82,7 +82,7 @@
                     <label class="block text-gray-700">Promo Code (Optional)</label>
                     <div class="flex gap-2">
                         <input type="text" wire:model="promoCode" class="w-full border p-2 rounded uppercase" placeholder="e.g. COREFIX20">
-                        <button type="button" wire:click="checkPromoCode" class="bg-secondary text-white px-4 rounded hover:bg-orange-600">Check</button>
+                        <button type="button" wire:click="checkPromoCode" class="bg-secondary text-white px-4 rounded hover:bg-[#2267BC]">Check</button>
                     </div>
                      @if($promoMessage)
                         <span class="{{ $promoValid ? 'text-green-600' : 'text-red-500' }} text-sm block mt-1">

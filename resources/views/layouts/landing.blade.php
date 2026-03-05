@@ -87,10 +87,10 @@
     <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex h-24 items-center">
+            <div class="flex py-4 md:py-6 items-center">
                 <!-- Logo -->
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-20 w-auto">
+                    <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-28 md:h-36 w-auto">
                 </div>
                 
                 <!-- Nav Links -->
@@ -121,7 +121,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
-                        <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-16 w-auto">
+                        <img src="{{ asset('logo.png?v=3') }}" alt="CoreFix" class="h-24 md:h-28 w-auto">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         Penyedia jasa service handphone terpercaya dengan standar kualitas tinggi dan garansi kepuasan pelanggan.
@@ -154,7 +154,7 @@
                     <ul class="space-y-3 text-sm text-gray-500">
                         <li class="flex flex-col md:flex-row items-center md:items-start">
                              <svg class="h-5 w-5 text-primary md:mr-2 mb-2 md:mb-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                             <span class="text-center md:text-left">Dusun keong No.67, RT.01/RW.07, Siwelut, Pamutih, Kec. Ulujami, Kabupaten Pemalang, Jawa Tengah 52371</span>
+                             <span class="text-center md:text-left">Jl. Tamtama, kendayaan, Penyangkringan, Kec. Weleri, Kabupaten Kendal, Jawa Tengah 51355</span>
                         </li>
                         <li class="flex flex-col md:flex-row items-center md:items-start mt-3">
                              <svg class="h-5 w-5 text-primary md:mr-2 mb-2 md:mb-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>

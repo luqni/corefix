@@ -20,7 +20,7 @@
                         Layanan perbaikan smartphone profesional dengan teknisi tersertifikasi. Cepat, transparan, dan bergaransi. Layanan service HP panggilan #1 Cek Segera!
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#booking" class="inline-flex justify-center items-center px-8 py-4 bg-secondary text-white font-bold rounded-xl shadow-xl shadow-secondary/20 hover:bg-orange-600 hover:-translate-y-1 transition transform">
+                        <a href="#booking" class="inline-flex justify-center items-center px-8 py-4 bg-secondary text-white font-bold rounded-xl shadow-xl shadow-secondary/20 hover:bg-[#2267BC] hover:-translate-y-1 transition transform">
                             Order Sekarang
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
@@ -103,8 +103,8 @@
                     <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Ganti LCD / Layar</h4>
-                    <p class="text-gray-500 mb-6">Layar pecah, retak, atau touchscreen tidak responsif? Kami ganti dengan sparepart berkualitas.</p>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Replace LCD & Battery</h4>
+                    <p class="text-gray-500 mb-6"> Pergantian LCD / baterai dengan kualitas terbaik</p>
                     <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
                         Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
@@ -115,8 +115,8 @@
                     <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Ganti Baterai</h4>
-                    <p class="text-gray-500 mb-6">Baterai cepat habis, kembung, atau hp sering mati sendiri? Saatnya ganti baterai baru.</p>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Sparepart</h4>
+                    <p class="text-gray-500 mb-6">Pergantian Flexibel, Kamera, Backglass, Houshing</p>
                     <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
                         Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
@@ -127,8 +127,8 @@
                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Software & Unlock</h4>
-                    <p class="text-gray-500 mb-6">Lupa pola/sandi, bootloop, hang logo, atau ingin upgrade OS? Kami bisa bantu.</p>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Kerusakan Mesin</h4>
+                    <p class="text-gray-500 mb-6">Perbaikan Mesin Mati Total, Wifi, dll</p>
                     <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
                         Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>

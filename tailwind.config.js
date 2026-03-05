@@ -16,7 +16,7 @@ export default {
             },
             colors: {
                 primary: '#0f284e', // Dark Blue
-                secondary: '#f68b23', // Orange
+                secondary: '#2267BC', // Blue
             },
         },
     },
