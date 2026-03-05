@@ -4,18 +4,30 @@
             
             <!-- Filters & Actions -->
             <div class="mb-6 flex flex-col md:flex-row justify-between items-center bg-gray-50 p-4 rounded-lg">
-                <div class="w-full md:w-1/3 mb-4 md:mb-0">
-                     <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Filter Status</label>
-                    <select wire:model.live="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
-                        <option value="">All Statuses</option>
-                        <option value="pending">Pending</option>
-                        <option value="received">Unit Received</option>
-                        <option value="diagnosing">Diagnosing</option>
-                        <option value="waiting_approval">Waiting Approval</option>
-                        <option value="repairing">Repairing</option>
-                        <option value="payment_verification">Payment Verification</option>
-                        <option value="done">Done</option>
-                    </select>
+                <div class="flex flex-col md:flex-row w-full md:w-2/3 gap-4 mb-4 md:mb-0">
+                    <div class="w-full md:w-1/2">
+                         <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Filter Status</label>
+                        <select wire:model.live="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="received">Unit Received</option>
+                            <option value="diagnosing">Diagnosing</option>
+                            <option value="waiting_approval">Waiting Approval</option>
+                            <option value="repairing">Repairing</option>
+                            <option value="payment_verification">Payment Verification</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                         <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Filter Periode</label>
+                        <select wire:model.live="dateFilter" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
+                            <option value="all">Semua Waktu</option>
+                            <option value="today">Hari Ini</option>
+                            <option value="week">Minggu Ini</option>
+                            <option value="month">Bulan Ini</option>
+                            <option value="year">Tahun Ini</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
