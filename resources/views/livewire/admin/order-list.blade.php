@@ -3,9 +3,13 @@
         <div class="p-6 text-gray-900">
             
             <!-- Filters & Actions -->
-            <div class="mb-6 flex flex-col md:flex-row justify-between items-center bg-gray-50 p-4 rounded-lg">
-                <div class="flex flex-col md:flex-row w-full md:w-2/3 gap-4 mb-4 md:mb-0">
-                    <div class="w-full md:w-1/2">
+            <div class="mb-6 flex flex-col md:flex-row justify-between items-center gap-4 bg-gray-50 p-4 rounded-lg">
+                <div class="flex flex-col md:flex-row w-full md:w-3/4 gap-4 mb-4 md:mb-0">
+                    <div class="w-full md:w-1/3">
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Search Tickets</label>
+                        <input wire:model.live.debounce.300ms="search" type="text" placeholder="Name, WA, ID, Date..." class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
+                    </div>
+                    <div class="w-full md:w-1/3">
                          <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Filter Status</label>
                         <select wire:model.live="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
                             <option value="">All Statuses</option>
@@ -18,7 +22,7 @@
                             <option value="done">Done</option>
                         </select>
                     </div>
-                    <div class="w-full md:w-1/2">
+                    <div class="w-full md:w-1/3">
                          <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Filter Periode</label>
                         <select wire:model.live="dateFilter" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full block">
                             <option value="all">Semua Waktu</option>
@@ -31,8 +35,9 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <span class="text-sm text-gray-500">
-                        {{ $tickets->count() }} of {{ $tickets->total() }} orders
+                    <span class="text-sm text-gray-500 hidden md:inline">
+                        Halaman <strong>{{ $tickets->currentPage() }}</strong> dari <strong>{{ $tickets->lastPage() }}</strong> 
+                        (Total: <strong>{{ $tickets->total() }}</strong>)
                     </span>
                     <a href="{{ route('admin.orders.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
                         <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,8 +119,13 @@
                 </table>
             </div>
 
-            <div class="mt-4">
-                {{ $tickets->links() }}
+            <div class="mt-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+                <div class="mb-4 sm:mb-0">
+                    Menampilkan <strong>{{ $tickets->firstItem() ?? 0 }}</strong> sampai <strong>{{ $tickets->lastItem() ?? 0 }}</strong> dari <strong>{{ $tickets->total() }}</strong> data
+                </div>
+                <div class="w-full sm:w-auto overflow-x-auto">
+                    {{ $tickets->links() }}
+                </div>
             </div>
 
         </div>

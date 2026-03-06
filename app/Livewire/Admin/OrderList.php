@@ -14,6 +14,7 @@ class OrderList extends Component
 
     public $status = '';
     public $dateFilter = 'all';
+    public $search = '';
 
     public function updatingStatus()
     {
@@ -25,9 +26,22 @@ class OrderList extends Component
         $this->resetPage();
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $tickets = Ticket::latest()
+            ->when($this->search, function ($query) {
+                return $query->where(function ($q) {
+                    $q->where('customer_name', 'ilike', '%' . $this->search . '%')
+                      ->orWhere('customer_wa', 'ilike', '%' . $this->search . '%')
+                      ->orWhere('id', 'ilike', '%' . $this->search . '%')
+                      ->orWhereRaw('created_at::text ilike ?', ['%' . $this->search . '%']);
+                });
+            })
             ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'CoreFix - Jasa Service HP Panggilan Pemalang & Pekalongan' }}</title>
+    <title>{{ $title ?? 'CoreFix - Apple & Gadget Repair' }}</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Jasa service HP panggilan terbaik di Pemalang, Pekalongan, dan sekitarnya. Ganti LCD, Baterai, Software, dan perbaikan lainnya. Teknisi profesional datang ke tempat Anda. Bergaransi!">
