@@ -1,4 +1,4 @@
-<div>
+<div x-data="{ showPricelist: false }">
     <!-- Hero Section -->
     <section class="relative bg-white overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent pointer-events-none"></div>
@@ -99,14 +99,14 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
+                <div @click="showPricelist = true" class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left cursor-pointer">
                     <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">Replace LCD & Battery</h4>
                     <p class="text-gray-500 mb-6"> Pergantian LCD / baterai dengan kualitas terbaik</p>
-                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
-                        Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    <a href="#" @click.prevent="showPricelist = true" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                        Pricelist <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
 
@@ -349,4 +349,18 @@
             </div>
         </div>
     </section>
+    </section>
+
+    <!-- Modal Pricelist PDF -->
+    <div x-show="showPricelist" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 sm:p-6" style="display: none;" x-transition>
+        <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl flex flex-col h-[90vh]" @click.outside="showPricelist = false">
+            <div class="flex justify-between items-center p-4 border-b border-gray-100">
+                <h3 class="text-lg font-bold text-gray-900">Pricelist LCD & Battery</h3>
+                <button @click="showPricelist = false" class="text-gray-400 hover:text-red-500 transition px-2 py-1 bg-gray-100 rounded-md font-bold text-xl">&times;</button>
+            </div>
+            <div class="flex-1 w-full bg-gray-100 rounded-b-2xl overflow-hidden relative">
+                <iframe src="{{ asset('PRICELIST LCD.pdf') }}" class="absolute inset-0 w-full h-full border-0"></iframe>
+            </div>
+        </div>
+    </div>
 </div>
