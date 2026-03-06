@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/orders/create', \App\Livewire\Admin\CreateOrder::class)->name('orders.create');
     Route::get('/tickets/{id}', \App\Livewire\Admin\TicketDetail::class)->name('tickets.show');
     Route::get('/tickets/{id}/invoice', [\App\Http\Controllers\InvoiceController::class, 'show'])->name('tickets.invoice');
+    Route::get('/tickets/{id}/invoice/pdf', [\App\Http\Controllers\InvoiceController::class, 'downloadPdf'])->name('tickets.invoice.pdf');
     Route::get('/spareparts', \App\Livewire\Admin\SparepartList::class)->name('spareparts');
     Route::get('/spare-part-types', \App\Livewire\Admin\SparePartTypeList::class)->name('spare-part-types');
     Route::get('/coupons', \App\Livewire\Admin\CouponList::class)->name('coupons');

@@ -126,11 +126,33 @@
 
             <!-- Invoice Items & Payment -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                 <div class="bg-gray-800 px-6 py-4 flex justify-between items-center">
-                    <h3 class="font-bold text-white">Invoice Items</h3>
-                    <a href="{{ route('admin.tickets.invoice', $ticket->id) }}" target="_blank" class="text-xs bg-white text-gray-800 px-2 py-1 rounded hover:bg-gray-200 transition font-bold uppercase">
-                        🖨️ Print Invoice
-                    </a>
+                <div class="bg-gray-800 px-6 py-4 flex justify-between items-center gap-2 overflow-x-auto">
+                    <h3 class="font-bold text-white whitespace-nowrap">Invoice Items</h3>
+                    <div class="flex flex-shrink-0 items-center gap-2">
+                        @php
+                            $waNumber = preg_replace('/[^0-9]/', '', $ticket->customer_wa);
+                            if (str_starts_with($waNumber, '0')) {
+                                $waNumber = '62' . substr($waNumber, 1);
+                            }
+                            $statusText = strtoupper(str_replace('_', ' ', $ticket->payment_status));
+                            $formattedTotal = number_format($ticket->total_cost, 0, ',', '.');
+                            $detailLink = route('tracking', $ticket->id);
+                            
+                            $waText = "Halo *{$ticket->customer_name}*, berikut adalah nota/invoice perbaikan *{$ticket->device_model}* Anda di CoreFix Service.\n\nTotal Tagihan: *Rp {$formattedTotal}*\nStatus Pembayaran: *{$statusText}*\n\nTerlampir juga file PDF Invoice Anda.\n\nDetail lengkap dapat dilihat pada tautan berikut:\n{$detailLink}\n\nTerima kasih atas kepercayaannya.";
+                            $waUrl = "https://wa.me/{$waNumber}?text=".urlencode($waText);
+                            $pdfUrl = route('admin.tickets.invoice.pdf', $ticket->id);
+                        @endphp
+                        
+                        <a href="javascript:void(0)" 
+                           onclick="window.open('{{ $waUrl }}', '_blank'); window.location.href='{{ $pdfUrl }}';"
+                           class="text-xs bg-[#25D366] text-white px-3 py-1.5 rounded hover:bg-[#1da851] transition font-bold uppercase flex items-center whitespace-nowrap">
+                            <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.06-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                            Kirim WA & PDF
+                        </a>
+                        <a href="{{ route('admin.tickets.invoice', $ticket->id) }}" target="_blank" class="text-xs bg-white text-gray-800 px-3 py-1.5 rounded hover:bg-gray-200 transition font-bold uppercase flex items-center whitespace-nowrap">
+                            🖨️ Print
+                        </a>
+                    </div>
                 </div>
                 <div class="p-6">
                     <!-- Item List -->
