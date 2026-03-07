@@ -17,14 +17,41 @@ class SparePartTypeList extends Component
     public $typeId;
     public $isModalOpen = false;
 
+    public $search = '';
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
+
     protected $rules = [
         'name' => 'required',
     ];
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render()
     {
+        $query = SparePartType::query();
+
+        if (!empty($this->search)) {
+            $query->where('name', 'ilike', '%' . $this->search . '%');
+        }
+
+        $query->orderBy($this->sortField, $this->sortDirection);
+
         return view('livewire.admin.spare-part-type-list', [
-            'types' => SparePartType::paginate(10),
+            'types' => $query->paginate(10),
             'title' => 'Spare Part Categories'
         ]);
     }

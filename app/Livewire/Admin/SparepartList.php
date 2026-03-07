@@ -17,6 +17,10 @@ class SparepartList extends Component
     public $partId;
     public $isModalOpen = false;
 
+    public $search = '';
+    public $sortField = 'name';
+    public $sortDirection = 'asc';
+
     protected $rules = [
         'name' => 'required',
         'spare_part_type_id' => 'required|exists:spare_part_types,id',
@@ -25,10 +29,36 @@ class SparepartList extends Component
         'stock' => 'required|integer',
     ];
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render()
     {
+        $query = SparePart::with('type');
+
+        if (!empty($this->search)) {
+            $query->where('name', 'ilike', '%' . $this->search . '%')
+                  ->orWhereHas('type', function ($q) {
+                      $q->where('name', 'ilike', '%' . $this->search . '%');
+                  });
+        }
+
+        $query->orderBy($this->sortField, $this->sortDirection);
+
         return view('livewire.admin.sparepart-list', [
-            'parts' => SparePart::with('type')->paginate(10), // Eager load type
+            'parts' => $query->paginate(10), // Eager load type
             'types' => SparePartType::all(), // Pass types for dropdown
             'title' => 'Spare Parts Inventory'
         ]);

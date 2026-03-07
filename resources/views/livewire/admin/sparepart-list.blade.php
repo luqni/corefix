@@ -2,11 +2,14 @@
     <div class="bg-white overflow-hidden shadow sm:rounded-lg">
         <div class="p-6 text-gray-900">
             <!-- Header & Actions -->
-            <div class="mb-6 flex justify-between items-center">
+            <div class="mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
                 <h3 class="text-lg font-bold text-gray-800">{{ $title ?? 'Spare Parts' }}</h3>
-                <button wire:click="create" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm font-medium">
-                    + Add New Part
-                </button>
+                <div class="flex items-center space-x-4">
+                    <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search by name or category..." class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm w-64">
+                    <button wire:click="create" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-sm font-medium whitespace-nowrap">
+                        + Add New Part
+                    </button>
+                </div>
             </div>
 
             @if (session()->has('message'))
@@ -20,12 +23,32 @@
                 <table class="w-full text-left border-collapse bg-white">
                     <thead>
                         <tr class="bg-gray-50 uppercase text-xs font-bold text-gray-500 border-b">
-                            <th class="p-4 tracking-wider">Item Name</th>
+                            <th wire:click="sortBy('name')" class="p-4 tracking-wider cursor-pointer hover:bg-gray-100">
+                                Item Name
+                                @if($sortField === 'name')
+                                    <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                                @endif
+                            </th>
                             <th class="p-4 tracking-wider">Type / Category</th>
-                            <th class="p-4 tracking-wider">Capital (IDR)</th>
-                            <th class="p-4 tracking-wider">Price (IDR)</th>
+                            <th wire:click="sortBy('capital_price')" class="p-4 tracking-wider cursor-pointer hover:bg-gray-100">
+                                Capital (IDR)
+                                @if($sortField === 'capital_price')
+                                    <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                                @endif
+                            </th>
+                            <th wire:click="sortBy('price')" class="p-4 tracking-wider cursor-pointer hover:bg-gray-100">
+                                Price (IDR)
+                                @if($sortField === 'price')
+                                    <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                                @endif
+                            </th>
                             <th class="p-4 tracking-wider">Net Profit</th>
-                            <th class="p-4 tracking-wider">Stock</th>
+                            <th wire:click="sortBy('stock')" class="p-4 tracking-wider cursor-pointer hover:bg-gray-100">
+                                Stock
+                                @if($sortField === 'stock')
+                                    <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                                @endif
+                            </th>
                             <th class="p-4 tracking-wider text-right">Actions</th>
                         </tr>
                     </thead>

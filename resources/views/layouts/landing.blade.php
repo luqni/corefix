@@ -150,7 +150,7 @@
                     <h3 class="text-gray-900 font-bold mb-4">Perusahaan</h3>
                     <ul class="space-y-3 text-sm text-gray-500">
                         <li><a href="#" class="hover:text-primary transition">Tentang Kami</a></li>
-                        <li><a href="#" class="hover:text-primary transition">Lokasi</a></li>
+                        <li><a href="/#lokasi" class="hover:text-primary transition">Lokasi</a></li>
                         <li><a href="#" class="hover:text-primary transition">Hubungi Kami</a></li>
                         <li><a href="#" class="hover:text-primary transition">Karir</a></li>
                     </ul>

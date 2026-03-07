@@ -99,37 +99,37 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div @click="showPricelist = true" class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
+                <div @click="showPricelist = true" class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center cursor-pointer flex flex-col items-center">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Replace LCD & Battery</h4>
-                    <p class="text-gray-500 mb-6"> Pergantian LCD / baterai dengan kualitas terbaik</p>
-                    <a href="#" @click.prevent="showPricelist = true" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-center">Replace LCD & Battery</h4>
+                    <p class="text-gray-500 mb-6 text-center"> Pergantian LCD / baterai dengan kualitas terbaik</p>
+                    <a href="#" @click.prevent="showPricelist = true" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center">
                         Pricelist <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center flex flex-col items-center">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Sparepart</h4>
-                    <p class="text-gray-500 mb-6">Pergantian Flexibel, Kamera, Backglass, Houshing</p>
-                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-center">Sparepart</h4>
+                    <p class="text-gray-500 mb-6 text-center">Pergantian Flexibel, Kamera, Backglass, Houshing</p>
+                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center">
                         Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center md:text-left">
-                   <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto md:mx-0">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                <div class="bg-white rounded-2xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-1 hover:shadow-xl transition border border-gray-100 group text-center flex flex-col items-center">
+                   <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition mx-auto">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Kerusakan Mesin</h4>
-                    <p class="text-gray-500 mb-6">Perbaikan Mesin Mati Total, Wifi, dll</p>
-                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center md:justify-start">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3 text-center">Kerusakan Mesin</h4>
+                    <p class="text-gray-500 mb-6 text-center">Perbaikan Mesin Mati Total, Wifi, dll</p>
+                    <a href="#booking" class="text-secondary font-semibold hover:text-orange-700 flex items-center justify-center">
                         Booking Service <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
                 </div>
@@ -338,7 +338,7 @@
     </section>
 
      <!-- Location / Map -->
-    <section class="py-24 bg-gray-50">
+    <section id="lokasi" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Lokasi</h2>
@@ -358,9 +358,12 @@
                 <h3 class="text-lg font-bold text-gray-900">Pricelist LCD & Battery</h3>
                 <button @click="showPricelist = false" class="text-gray-400 hover:text-red-500 transition px-2 py-1 bg-gray-100 rounded-md font-bold text-xl">&times;</button>
             </div>
-            <div class="flex-1 w-full bg-gray-100 rounded-b-2xl overflow-hidden relative">
+            <div class="flex-1 w-full bg-gray-100 rounded-b-2xl overflow-y-auto relative">
                 <template x-if="showPricelist">
-                    <iframe src="{{ asset('PRICELIST LCD.pdf') }}" class="absolute inset-0 w-full h-full border-0" loading="lazy"></iframe>
+                    <div class="flex flex-col">
+                        <img src="{{ asset('PRICELIST LCD.png') }}" class="w-full h-auto" loading="lazy" alt="Pricelist LCD">
+                        <img src="{{ asset('PRICELIST BATTERY.png') }}" class="w-full h-auto mt-4" loading="lazy" alt="Pricelist Battery">
+                    </div>
                 </template>
             </div>
         </div>

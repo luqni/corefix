@@ -1,9 +1,12 @@
 <div class="p-6 bg-white border-b border-gray-200">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800">{{ $title }}</h2>
-        <button wire:click="create()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-            Add New Category
-        </button>
+        <div class="flex items-center space-x-4">
+            <input wire:model.live.debounce.300ms="search" type="text" placeholder="Search by name..." class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <button wire:click="create()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                Add New Category
+            </button>
+        </div>
     </div>
 
     @if (session()->has('message'))
@@ -17,8 +20,18 @@
             <thead>
                 <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
                     <th class="py-3 px-6 text-left">No</th>
-                    <th class="py-3 px-6 text-left">Name</th>
-                    <th class="py-3 px-6 text-left">Slug</th>
+                    <th wire:click="sortBy('name')" class="py-3 px-6 text-left cursor-pointer hover:bg-gray-200">
+                        Name
+                        @if($sortField === 'name')
+                            <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                        @endif
+                    </th>
+                    <th wire:click="sortBy('slug')" class="py-3 px-6 text-left cursor-pointer hover:bg-gray-200">
+                        Slug
+                        @if($sortField === 'slug')
+                            <span>{!! $sortDirection === 'asc' ? '&uarr;' : '&darr;' !!}</span>
+                        @endif
+                    </th>
                     <th class="py-3 px-6 text-center">Actions</th>
                 </tr>
             </thead>
