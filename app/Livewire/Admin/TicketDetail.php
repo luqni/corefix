@@ -227,10 +227,36 @@ class TicketDetail extends Component
         session()->flash('message', 'Payment approved.');
     }
 
+    public function approvePaymentDirect()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
+        $this->ticket->update([
+            'payment_status' => 'paid',
+        ]);
+
+        $this->ticket->logs()->create([
+            'user_id' => auth()->id(),
+            'new_status' => $this->ticket->status,
+            'notes' => 'Payment marked as PAID (Direct Transaction/Cash) without proof by admin.',
+        ]);
+
+        $this->loadTicket();
+        session()->flash('message', 'Payment marked as paid (Direct Transaction).');
+    }
+
+    public $searchPart = '';
+
     public function render()
     {
+        $sparePartsQuery = SparePart::orderBy('name', 'asc');
+        
+        if (!empty($this->searchPart)) {
+            $sparePartsQuery->where('name', 'ilike', '%' . $this->searchPart . '%');
+        }
+
         return view('livewire.admin.ticket-detail', [
-            'spareParts' => SparePart::all(),
+            'spareParts' => $sparePartsQuery->get(),
         ]);
     }
 }

@@ -253,12 +253,34 @@
                     <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6">
                         <h4 class="text-xs font-bold text-gray-500 uppercase mb-3">Add Item / Spare Part</h4>
                         <div class="grid grid-cols-1 gap-3">
-                            <select wire:model.live="selectedPartId" class="block w-full rounded-md border-gray-300 shadow-sm text-sm">
-                                <option value="">-- Select from Inventory (Optional) --</option>
-                                @foreach($spareParts as $part)
-                                    <option value="{{ $part->id }}">{{ $part->name }} (Rp {{ number_format($part->price, 0, ',', '.') }})</option>
-                                @endforeach
-                            </select>
+                            <div x-data="{ open: false, search: @entangle('searchPart') }" class="relative">
+                                <div @click="open = !open" class="block w-full rounded-md border border-gray-300 shadow-sm text-sm bg-white px-3 py-2 cursor-pointer flex justify-between items-center">
+                                    <span class="truncate">
+                                        {{ $selectedPartId ? $spareParts->firstWhere('id', $selectedPartId)?->name ?? '-- Select from Inventory (Optional) --' : '-- Select from Inventory (Optional) --' }}
+                                    </span>
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                
+                                <div x-show="open" @click.away="open = false" class="absolute z-50 w-full mt-1 bg-white rounded-md shadow-lg border border-gray-200">
+                                    <div class="p-2 border-b border-gray-100">
+                                        <input type="text" wire:model.live.debounce.300ms="searchPart" placeholder="Search spare parts..." class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    </div>
+                                    <ul class="max-h-60 overflow-y-auto py-1">
+                                        <li @click="$wire.set('selectedPartId', ''); open = false" class="px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 cursor-pointer">
+                                            -- Select from Inventory (Optional) --
+                                        </li>
+                                        @foreach($spareParts as $part)
+                                            <li @click="$wire.set('selectedPartId', '{{ $part->id }}'); open = false" class="px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 cursor-pointer flex justify-between">
+                                                <span>{{ $part->name }}</span>
+                                                <span class="text-gray-500">Rp {{ number_format($part->price, 0, ',', '.') }}</span>
+                                            </li>
+                                        @endforeach
+                                        @if($spareParts->isEmpty())
+                                            <li class="px-3 py-2 text-sm text-gray-500 text-center italic">No parts found</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
                             
                             <div class="flex gap-2 items-center">
                                 <input type="text" wire:model="newItemDescription" placeholder="Item Description (e.g. Service Fee)" class="block w-full rounded-md border-gray-300 shadow-sm text-sm">
@@ -313,12 +335,21 @@
                                 @endif
                             </div>
                         @else
-                            <div class="text-center py-4 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                            <div class="text-center py-4 bg-gray-50 rounded-lg border border-dashed border-gray-300 mb-3">
                                 <svg class="mx-auto h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                                 <p class="mt-1 text-xs text-gray-500">No payment proof uploaded yet.</p>
                             </div>
+                            
+                            @if($ticket->payment_status !== 'paid')
+                            <button wire:click="approvePaymentDirect" wire:confirm="Mark as paid without payment proof? (For cash/direct transactions)" class="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none transition">
+                                <svg class="h-4 w-4 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Mark as Paid (Cash / Direct)
+                            </button>
+                            @endif
                         @endif
                     </div>
                 </div>
