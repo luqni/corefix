@@ -39,14 +39,22 @@
                         Halaman <strong>{{ $tickets->currentPage() }}</strong> dari <strong>{{ $tickets->lastPage() }}</strong> 
                         (Total: <strong>{{ $tickets->total() }}</strong>)
                     </span>
+                    @if(auth()->user()->hasRole(['super_admin', 'admin']))
                     <a href="{{ route('admin.orders.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
                         <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
                         New Order
                     </a>
+                    @endif
                 </div>
             </div>
+
+            @if (session()->has('message'))
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                    <p>{{ session('message') }}</p>
+                </div>
+            @endif
 
             <!-- Table -->
             <div class="overflow-x-auto border rounded-lg">
@@ -106,8 +114,14 @@
                                         {{ str_replace('_', ' ', $ticket->payment_status) }}
                                     </span>
                                 </td>
-                                <td class="p-4 text-sm">
-                                    <a href="{{ route('admin.tickets.show', $ticket->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold text-xs uppercase tracking-wide border border-indigo-200 px-3 py-1 rounded hover:bg-indigo-50 transition">Manage</a>
+                                <td class="p-4 text-sm whitespace-nowrap">
+                                    <a href="{{ route('admin.tickets.show', $ticket->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold text-xs uppercase tracking-wide border border-indigo-200 px-3 py-1 rounded hover:bg-indigo-50 transition mr-2">Manage</a>
+                                    
+                                    @if(auth()->user()->isSuperAdmin())
+                                    <button onclick="confirm('Are you sure you want to delete this order? All related items and logs will be deleted as well.') || event.stopImmediatePropagation()" wire:click="deleteOrder('{{ $ticket->id }}')" class="text-red-500 hover:text-red-700 font-bold text-xs uppercase tracking-wide border border-red-200 px-3 py-1 rounded hover:bg-red-50 transition">
+                                        Delete
+                                    </button>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

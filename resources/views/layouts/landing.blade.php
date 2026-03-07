@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth overflow-x-hidden">
-</head>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'CoreFix - Apple & Gadget Repair' }}</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Jasa service HP panggilan terbaik di Pemalang, Pekalongan, dan sekitarnya. Ganti LCD, Baterai, Software, dan perbaikan lainnya. Teknisi profesional datang ke tempat Anda. Bergaransi!">
-    <meta name="keywords" content="service hp pemalang, service hp panggilan, ganti lcd, ganti baterai, service iphone pemalang, service android, teknisi hp, corefix">
+    <meta name="description" content="{{ $metaDescription ?? 'Jasa service HP panggilan terbaik di Weleri, Kendal, Pemalang, dan sekitarnya. Ganti LCD, Baterai, Software, dan perbaikan lainnya. Teknisi profesional datang ke tempat Anda. Bergaransi!' }}">
+    <meta name="keywords" content="{{ $metaKeywords ?? 'service hp weleri, service hp kendal, service hp pemalang, service hp panggilan, ganti lcd, ganti baterai, service iphone, service android, teknisi hp, corefix' }}">
     <meta name="author" content="CoreFix.id">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Indonesian">
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <!-- Geo Tags (Weleri, Kendal) -->
     <meta name="geo.region" content="ID-JT" />
-    <meta name="geo.placename" content="Pemalang" />
-    <meta name="geo.position" content="-6.8921;109.3805" />
-    <meta name="ICBM" content="-6.8921, 109.3805" />
+    <meta name="geo.placename" content="Kendal" />
+    <meta name="geo.position" content="-6.9723;110.0682" />
+    <meta name="ICBM" content="-6.9723, 110.0682" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="business.business">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
-    <meta property="og:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $title ?? 'CoreFix - Jasa Service HP Panggilan Bergaransi' }}">
+    <meta property="og:description" content="{{ $metaDescription ?? 'HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.' }}">
     <meta property="og:image" content="{{ asset('logo.png?v=5') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ url('/') }}">
-    <meta property="twitter:title" content="CoreFix - Jasa Service HP Panggilan Bergaransi">
-    <meta property="twitter:description" content="HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $title ?? 'CoreFix - Jasa Service HP Panggilan Bergaransi' }}">
+    <meta property="twitter:description" content="{{ $metaDescription ?? 'HP Rusak? Jangan panik! Teknisi CoreFix siap datang ke lokasi Anda. Cepat, Transparan, dan Bergaransi 90 Hari.' }}">
     <meta property="twitter:image" content="{{ asset('logo.png?v=5') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet" />
+    
+    <!-- Preload LCP Images -->
+    <link rel="preload" href="{{ asset('logo.png?v=5') }}" as="image" />
+    <link rel="preload" href="{{ asset('mesin iphone.png?v=4') }}" as="image" />
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -51,16 +57,16 @@
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Dusun keong No.67, RT.01/RW.07, Siwelut, Pamutih",
-        "addressLocality": "Ulujami",
-        "addressRegion": "Pemalang",
-        "postalCode": "52371",
+        "streetAddress": "Jl. Tamtama, kendayaan, Penyangkringan, Kec. Weleri",
+        "addressLocality": "Kabupaten Kendal",
+        "addressRegion": "Jawa Tengah",
+        "postalCode": "51355",
         "addressCountry": "ID"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -6.8530966,
-        "longitude": 109.5427463
+        "latitude": -6.9723,
+        "longitude": 110.0682
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -90,7 +96,7 @@
             <div class="flex py-4 md:py-6 items-center">
                 <!-- Logo -->
                 <div class="w-full md:w-auto flex justify-center md:justify-start">
-                    <img src="{{ asset('logo.png?v=5') }}" alt="CoreFix" class="h-28 md:h-36 w-auto">
+                    <img src="{{ asset('logo.png?v=5') }}" alt="Logo CoreFix Jasa Service HP" class="h-28 md:h-36 w-auto">
                 </div>
                 
                 <!-- Nav Links -->
@@ -121,7 +127,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
-                        <img src="{{ asset('logo.png?v=5') }}" alt="CoreFix" class="h-24 md:h-28 w-auto">
+                        <img src="{{ asset('logo.png?v=5') }}" alt="Logo CoreFix Jasa Service HP" class="h-24 md:h-28 w-auto" loading="lazy">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">
                         Penyedia jasa service handphone terpercaya dengan standar kualitas tinggi dan garansi kepuasan pelanggan.

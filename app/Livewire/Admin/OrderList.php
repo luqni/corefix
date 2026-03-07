@@ -31,6 +31,16 @@ class OrderList extends Component
         $this->resetPage();
     }
 
+    public function deleteOrder($id)
+    {
+        if (!auth()->user()->isSuperAdmin()) {
+            abort(403);
+        }
+
+        Ticket::find($id)?->delete();
+        session()->flash('message', 'Order deleted successfully.');
+    }
+
     public function render()
     {
         $tickets = Ticket::latest()

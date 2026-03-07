@@ -19,5 +19,21 @@ class AdminSeeder extends Seeder
             'role' => 'admin',
             'password' => bcrypt('password'),
         ]);
+
+        \App\Models\User::updateOrCreate([
+            'email' => 'superadmin@corefix.id',
+        ], [
+            'name' => 'Super Admin',
+            'role' => 'super_admin',
+            'password' => bcrypt('password'),
+        ]);
+
+        \App\Models\User::updateOrCreate([
+            'email' => 'teknisi@corefix.id',
+        ], [
+            'name' => 'Teknisi Corefix',
+            'role' => 'teknisi',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

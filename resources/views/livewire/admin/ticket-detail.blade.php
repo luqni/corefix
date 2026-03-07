@@ -21,29 +21,67 @@
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                 <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                     <h3 class="font-bold text-gray-800">Customer & Device Details</h3>
-                    <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded font-bold uppercase tracking-wide">Info</span>
+                    <div class="flex space-x-2">
+                        @if(auth()->user()->hasRole(['super_admin', 'admin']) && !$isEditingCustomer)
+                        <button wire:click="editCustomerData" class="text-xs text-indigo-600 border border-indigo-200 bg-white px-3 py-1 rounded font-bold uppercase tracking-wide hover:bg-indigo-50 transition">
+                            ✏️ Edit
+                        </button>
+                        @endif
+                        <span class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded font-bold uppercase tracking-wide">Info</span>
+                    </div>
                 </div>
-                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Device Model</label>
-                        <p class="font-bold text-lg text-gray-800">{{ $ticket->device_model }}</p>
+                <div class="p-6">
+                    @if($isEditingCustomer)
+                    <form wire:submit.prevent="saveCustomerData" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Device Model</label>
+                            <input type="text" wire:model="editDeviceModel" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Customer Name</label>
+                            <input type="text" wire:model="editCustomerName" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Reported Issue</label>
+                            <input type="text" wire:model="editIssue" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">WhatsApp</label>
+                            <input type="text" wire:model="editCustomerWa" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Address</label>
+                            <textarea wire:model="editCustomerAddress" rows="2" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"></textarea>
+                        </div>
+                        <div class="md:col-span-2 flex justify-end space-x-2 mt-2">
+                            <button type="button" wire:click="$set('isEditingCustomer', false)" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none">Cancel</button>
+                            <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">Save Changes</button>
+                        </div>
+                    </form>
+                    @else
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Device Model</label>
+                            <p class="font-bold text-lg text-gray-800">{{ $ticket->device_model }}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Reported Issue</label>
+                            <p class="text-gray-700">{{ $ticket->issue_description }}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Customer Name</label>
+                            <p class="font-semibold text-gray-800">{{ $ticket->customer_name }}</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">WhatsApp</label>
+                            <p class="text-gray-600 font-mono">{{ $ticket->customer_wa }}</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Address</label>
+                            <p class="text-gray-600">{{ $ticket->customer_address }}</p>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Reported Issue</label>
-                        <p class="text-gray-700">{{ $ticket->issue_description }}</p>
-                    </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Customer Name</label>
-                        <p class="font-semibold text-gray-800">{{ $ticket->customer_name }}</p>
-                    </div>
-                    <div>
-                        <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">WhatsApp</label>
-                        <p class="text-gray-600 font-mono">{{ $ticket->customer_wa }}</p>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-xs text-gray-400 uppercase font-bold tracking-wide mb-1">Address</label>
-                        <p class="text-gray-600">{{ $ticket->customer_address }}</p>
-                    </div>
+                    @endif
                 </div>
             </div>
 
@@ -125,6 +163,7 @@
             </div>
 
             <!-- Invoice Items & Payment -->
+            @if(auth()->user()->hasRole(['super_admin', 'admin']))
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                 <div class="bg-gray-800 px-6 py-4 flex justify-between items-center gap-2 overflow-x-auto">
                     <h3 class="font-bold text-white whitespace-nowrap">Invoice Items</h3>
@@ -284,6 +323,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
         </div>
     </div>

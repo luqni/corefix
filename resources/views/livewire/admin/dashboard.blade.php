@@ -30,13 +30,16 @@
             <div class="text-3xl font-black text-green-600 mt-2">{{ $completed }}</div>
         </div>
 
+        @if(auth()->user()->hasRole(['super_admin', 'admin']))
         <!-- Revenue -->
         <div class="bg-white overflow-hidden shadow sm:rounded-lg p-6 border-l-4 border-yellow-500">
             <div class="text-gray-500 text-xs uppercase font-bold tracking-wider">Total Revenue</div>
             <div class="text-3xl font-black text-gray-900 mt-2">Rp {{ number_format($revenue, 0, ',', '.') }}</div>
         </div>
+        @endif
     </div>
 
+    @if(auth()->user()->hasRole(['super_admin', 'admin']))
     <!-- Net Profit Rows -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Net Profit Sparepart -->
@@ -59,7 +62,9 @@
         <h3 class="text-lg font-bold text-gray-800 mb-4">Revenue Trend</h3>
         <div id="revenueChart" style="min-height: 350px;"></div>
     </div>
+    @endif
 
+    @if(auth()->user()->hasRole(['super_admin', 'admin']))
     @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
@@ -117,4 +122,5 @@
         });
     </script>
     @endpush
+    @endif
 </div>

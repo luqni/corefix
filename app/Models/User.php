@@ -26,7 +26,22 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->hasRole(['super_admin', 'admin']);
+    }
+
+    public function isTeknisi(): bool
+    {
+        return $this->role === 'teknisi';
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'super_admin';
+    }
+
+    public function hasRole(array|string $roles): bool
+    {
+        return in_array($this->role, (array) $roles);
     }
 
     /**

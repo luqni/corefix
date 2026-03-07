@@ -43,7 +43,7 @@
                      <!-- Illustration/Image Placeholder -->
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border-4 border-white aspect-[4/3]">
                         <div class="absolute inset-0 flex items-center justify-center bg-gray-800 text-gray-500">
-                             <img src="{{ asset('mesin iphone.png?v=4') }}?q=80&w=1000&auto=format&fit=crop" alt="Teknisi Service HP" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700">
+                             <img src="{{ asset('mesin iphone.png?v=4') }}" fetchpriority="high" alt="Teknisi Service HP Panggilan CoreFix" class="object-cover w-full h-full opacity-90 hover:scale-105 transition duration-700">
                              <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
                              <div class="absolute bottom-6 left-6 text-white text-left">
                                 <div class="font-bold text-xl">Teknisi Profesional</div>
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="relative order-1 md:order-2">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop" alt="Tim CoreFix" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=60&w=800&auto=format&fit=crop" loading="lazy" alt="Tim teknisi CoreFix melayani service HP panggilan" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-[4/3]">
                     <div class="absolute -top-6 -right-6 w-2/3 h-2/3 bg-blue-50 rounded-2xl -z-0"></div>
                     <div class="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 w-full h-full bg-secondary/10 rounded-full blur-3xl -z-10"></div>
                 </div>
@@ -181,7 +181,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="relative">
-                    <img src="{{ asset('ilustrasi1.png') }}" alt="Quality Service" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-square">
+                    <img src="{{ asset('ilustrasi1.png') }}" loading="lazy" alt="Kualitas Jasa Service HP CoreFix" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-square">
                     <div class="absolute -bottom-6 -right-6 w-2/3 h-2/3 bg-gray-100 rounded-2xl -z-0"></div>
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-secondary/10 rounded-full blur-3xl -z-10"></div>
                 </div>
@@ -359,7 +359,9 @@
                 <button @click="showPricelist = false" class="text-gray-400 hover:text-red-500 transition px-2 py-1 bg-gray-100 rounded-md font-bold text-xl">&times;</button>
             </div>
             <div class="flex-1 w-full bg-gray-100 rounded-b-2xl overflow-hidden relative">
-                <iframe src="{{ asset('PRICELIST LCD.pdf') }}" class="absolute inset-0 w-full h-full border-0"></iframe>
+                <template x-if="showPricelist">
+                    <iframe src="{{ asset('PRICELIST LCD.pdf') }}" class="absolute inset-0 w-full h-full border-0" loading="lazy"></iframe>
+                </template>
             </div>
         </div>
     </div>

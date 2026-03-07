@@ -9,6 +9,7 @@ Route::get('/track/{id?}', TicketTracking::class)->name('tracking');
 
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', \App\Livewire\Admin\Dashboard::class)->name('dashboard');
+    Route::get('/users', \App\Livewire\Admin\UserList::class)->name('users');
     Route::get('/orders', \App\Livewire\Admin\OrderList::class)->name('orders');
     Route::get('/orders/create', \App\Livewire\Admin\CreateOrder::class)->name('orders.create');
     Route::get('/tickets/{id}', \App\Livewire\Admin\TicketDetail::class)->name('tickets.show');

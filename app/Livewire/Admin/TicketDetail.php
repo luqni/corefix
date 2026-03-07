@@ -27,6 +27,14 @@ class TicketDetail extends Component
 
     public $selectedPartId = '';
 
+    // Customer Edit
+    public $isEditingCustomer = false;
+    public $editCustomerName;
+    public $editCustomerWa;
+    public $editCustomerAddress;
+    public $editDeviceModel;
+    public $editIssue;
+
     public function mount($id)
     {
         $this->ticketId = $id;
@@ -51,8 +59,50 @@ class TicketDetail extends Component
         }
     }
 
+    public function editCustomerData()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) return;
+        
+        $this->editCustomerName = $this->ticket->customer_name;
+        $this->editCustomerWa = $this->ticket->customer_wa;
+        $this->editCustomerAddress = $this->ticket->customer_address;
+        $this->editDeviceModel = $this->ticket->device_model;
+        $this->editIssue = $this->ticket->issue_description;
+        $this->isEditingCustomer = true;
+    }
+
+    public function saveCustomerData()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        $this->validate([
+            'editCustomerName' => 'required',
+            'editCustomerWa' => 'required',
+            'editDeviceModel' => 'required',
+        ]);
+        
+        $this->ticket->update([
+            'customer_name' => $this->editCustomerName,
+            'customer_wa' => $this->editCustomerWa,
+            'customer_address' => $this->editCustomerAddress,
+            'device_model' => $this->editDeviceModel,
+            'issue_description' => $this->editIssue,
+        ]);
+        
+        $this->ticket->logs()->create([
+            'user_id' => auth()->id(),
+            'new_status' => $this->ticket->status,
+            'notes' => 'Customer information updated by admin.',
+        ]);
+        
+        $this->isEditingCustomer = false;
+        $this->loadTicket();
+        session()->flash('message', 'Customer details updated successfully.');
+    }
+
     public function addItem()
     {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+
         $this->validate([
             'newItemDescription' => 'required|min:3',
             'newItemPrice' => 'required|numeric|min:0',
@@ -85,6 +135,8 @@ class TicketDetail extends Component
 
     public function removeItem($itemId)
     {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
         TicketItem::destroy($itemId);
         $this->recalculateTotal();
         $this->loadTicket();
@@ -159,6 +211,8 @@ class TicketDetail extends Component
 
     public function approvePayment()
     {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
         $this->ticket->update([
             'payment_status' => 'paid',
         ]);

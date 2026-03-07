@@ -15,6 +15,13 @@ class CreateOrder extends Component
     public $device;
     public $issue;
 
+    public function mount()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) {
+            abort(403, 'Unauthorized access.');
+        }
+    }
+
     protected $rules = [
         'name' => 'required|min:3',
         'whatsapp' => 'required|numeric|min_digits:10',

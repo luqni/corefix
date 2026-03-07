@@ -20,8 +20,13 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        if (Auth::user()->isAdmin()) {
+        $user = Auth::user();
+
+        if ($user->isSuperAdmin() || $user->hasRole(['admin'])) {
             $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+            return;
+        } elseif ($user->isTeknisi()) {
+            $this->redirectIntended(default: route('admin.orders', absolute: false), navigate: true);
             return;
         }
 
