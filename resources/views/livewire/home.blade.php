@@ -13,15 +13,15 @@
                         Service HP Bergaransi & Terpercaya
                     </div>
                     <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                        Solusi Masalah <br/>
-                        <span class="text-secondary">Smartphone</span> Kamu
+                        {!! $cms['hero_title_1'] ?? 'Solusi Masalah' !!} <br/>
+                        <span class="text-secondary">{!! $cms['hero_title_2'] ?? 'Smartphone' !!}</span> {!! $cms['hero_title_3'] ?? 'Kamu' !!}
                     </h1>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0">
-                        Layanan perbaikan smartphone profesional dengan teknisi tersertifikasi. Cepat, transparan, dan bergaransi. Layanan service HP panggilan #1 Cek Segera!
+                        {!! $cms['hero_subtitle'] ?? 'Layanan perbaikan smartphone profesional dengan teknisi tersertifikasi. Cepat, transparan, dan bergaransi. Layanan service HP panggilan #1 Cek Segera!' !!}
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#booking" class="inline-flex justify-center items-center px-8 py-4 bg-secondary text-white font-bold rounded-xl shadow-xl shadow-secondary/20 hover:bg-[#2267BC] hover:-translate-y-1 transition transform">
-                            Order Sekarang
+                        <a href="{{ $cms['hero_cta_link'] ?? '#booking' }}" class="inline-flex justify-center items-center px-8 py-4 bg-secondary text-white font-bold rounded-xl shadow-xl shadow-secondary/20 hover:bg-[#2267BC] hover:-translate-y-1 transition transform">
+                            {{ $cms['hero_cta_text'] ?? 'Order Sekarang' }}
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                         <a href="#services" class="inline-flex justify-center items-center px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border border-gray-200 hover:border-primary hover:text-primary transition">
@@ -70,17 +70,17 @@
                  <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-400 rounded-full blur-3xl -z-0 opacity-20"></div>
                  
                 <div class="text-center md:text-left relative z-10">
-                    <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-2">PROMO SPESIAL! 🎉</h2>
-                    <p class="text-lg text-gray-600 mb-4">Dapatkan potongan harga <span class="font-bold text-red-500">20%</span> untuk service LCD & Baterai.</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-2">{!! $cms['promo_title'] ?? 'PROMO SPESIAL! 🎉' !!}</h2>
+                    <p class="text-lg text-gray-600 mb-4">{!! $cms['promo_text'] ?? 'Dapatkan potongan harga <span class="font-bold text-red-500">20%</span> untuk service LCD & Baterai.' !!}</p>
                     <div class="inline-block bg-gray-100 rounded-lg px-4 py-2 border border-dashed border-gray-400">
                         <span class="text-gray-500 text-sm mr-2">Kode Promo:</span>
-                        <span class="font-mono font-bold text-xl text-primary tracking-wider">COREFIX20</span>
+                        <span class="font-mono font-bold text-xl text-primary tracking-wider">{{ $cms['promo_code'] ?? 'COREFIX20' }}</span>
                     </div>
-                    <p class="text-xs text-gray-400 mt-2">*Syarat & ketentuan berlaku. Terbatas untuk 50 orang pertama.</p>
+                    <p class="text-xs text-gray-400 mt-2">{!! $cms['promo_note'] ?? '*Syarat & ketentuan berlaku. Terbatas untuk 50 orang pertama.' !!}</p>
                 </div>
                 <div class="relative z-10 shrink-0">
-                    <a href="?promo=COREFIX20#booking" class="inline-flex justify-center items-center px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-900 hover:scale-105 transition transform text-lg">
-                        Klaim Promo Sekarang
+                    <a href="{{ $cms['promo_cta_link'] ?? '?promo=COREFIX20#booking' }}" class="inline-flex justify-center items-center px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-900 hover:scale-105 transition transform text-lg">
+                        {{ $cms['promo_cta_text'] ?? 'Klaim Promo Sekarang' }}
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>
                 </div>
@@ -142,28 +142,28 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1">
-                    <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Tentang Kami</h2>
-                    <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Mitra Terpercaya untuk Perbaikan Gadget Anda</h3>
+                    <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">{{ $cms['about_title'] ?? 'Tentang Kami' }}</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">{{ $cms['about_subtitle'] ?? 'Mitra Terpercaya untuk Perbaikan Gadget Anda' }}</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        CoreFix hadir sebagai solusi untuk segala masalah smartphone Anda. Kami mengerti betapa pentingnya gadget dalam produktivitas sehari-hari. Oleh karena itu, kami berkomitmen memberikan layanan perbaikan yang cepat, transparan, dan berkualitas tinggi.
+                        {{ $cms['about_content_1'] ?? 'CoreFix hadir sebagai solusi untuk segala masalah smartphone Anda. Kami mengerti betapa pentingnya gadget dalam produktivitas sehari-hari. Oleh karena itu, kami berkomitmen memberikan layanan perbaikan yang cepat, transparan, dan berkualitas tinggi.' }}
                     </p>
                     <p class="text-gray-600 mb-8 leading-relaxed">
-                        Didukung oleh tim teknisi yang berpengalaman dan tersertifikasi, serta penggunaan sparepart original, kami menjamin kepuasan setiap pelanggan. Mulai dari ganti LCD, baterai, hingga perbaikan mesin, kami siap membantu.
+                        {{ $cms['about_content_2'] ?? 'Didukung oleh tim teknisi yang berpengalaman dan tersertifikasi, serta penggunaan sparepart original, kami menjamin kepuasan setiap pelanggan. Mulai dari ganti LCD, baterai, hingga perbaikan mesin, kami siap membantu.' }}
                     </p>
                     <div class="flex gap-4">
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-primary">5+</span>
-                            <span class="text-sm text-gray-500">Tahun Pengalaman</span>
+                            <span class="text-3xl font-bold text-primary">{{ $cms['about_exp_years'] ?? '5+' }}</span>
+                            <span class="text-sm text-gray-500">{{ $cms['about_exp_label'] ?? 'Tahun Pengalaman' }}</span>
                         </div>
                          <div class="h-12 w-px bg-gray-200"></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-primary">10k+</span>
-                            <span class="text-sm text-gray-500">Device Diperbaiki</span>
+                            <span class="text-3xl font-bold text-primary">{{ $cms['about_devices_count'] ?? '10k+' }}</span>
+                            <span class="text-sm text-gray-500">{{ $cms['about_devices_label'] ?? 'Device Diperbaiki' }}</span>
                         </div>
                         <div class="h-12 w-px bg-gray-200"></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-primary">99%</span>
-                            <span class="text-sm text-gray-500">Pelanggan Puas</span>
+                            <span class="text-3xl font-bold text-primary">{{ $cms['about_satisfaction_percent'] ?? '99%' }}</span>
+                            <span class="text-sm text-gray-500">{{ $cms['about_satisfaction_label'] ?? 'Pelanggan Puas' }}</span>
                         </div>
                     </div>
                 </div>
@@ -186,8 +186,8 @@
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-secondary/10 rounded-full blur-3xl -z-10"></div>
                 </div>
                 <div>
-                     <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">Kenapa Memilih Kami?</h2>
-                     <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Standar Kualitas Tertinggi untuk Gadget Kesayanganmu</h3>
+                     <h2 class="text-secondary font-bold tracking-wide uppercase text-sm mb-3">{{ $cms['why_title'] ?? 'Kenapa Memilih Kami?' }}</h2>
+                     <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">{{ $cms['why_subtitle'] ?? 'Standar Kualitas Tertinggi untuk Gadget Kesayanganmu' }}</h3>
                      <div class="space-y-6">
                         <div class="flex gap-4">
                             <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-primary">
@@ -255,8 +255,8 @@
         <div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold mb-4">Mulai Perbaikan</h2>
-                <p class="text-lg text-gray-400">Isi formulir di bawah ini, teknisi kami akan segera menghubungi Anda.</p>
+                <h2 class="text-3xl font-extrabold mb-4">{{ $cms['cta_title'] ?? 'Mulai Perbaikan' }}</h2>
+                <p class="text-lg text-gray-400">{{ $cms['cta_subtitle'] ?? 'Isi formulir di bawah ini, teknisi kami akan segera menghubungi Anda.' }}</p>
             </div>
             
             <div class="bg-white rounded-2xl p-6 md:p-10 shadow-2xl overflow-hidden text-gray-900">

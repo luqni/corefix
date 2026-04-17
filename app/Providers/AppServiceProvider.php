@@ -22,5 +22,11 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
+
+        // Share Landing Page CMS data with all views
+        if (\Illuminate\Support\Facades\Schema::hasTable('landing_pages')) {
+            $cms = \App\Models\LandingPage::pluck('value', 'key')->toArray();
+            \Illuminate\Support\Facades\View::share('cms', $cms);
+        }
     }
 }
