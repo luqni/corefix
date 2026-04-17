@@ -146,7 +146,7 @@
 
     <div class="footer">
         <p><strong>CoreFix Service</strong></p>
-        <p>Jl. Tamtama, kendayaan, Penyangkringan, Kec. Weleri, Kabupaten Kendal, Jawa Tengah 51355</p>
+        <p>Toko Perumahan Taman Sari (Paling Utara), Jl. Sri Agung, Debong Kidul, Botomulyo, Kec. Cepiring, Kabupaten Kendal, Jawa Tengah 51357, Debong Kidul, Botomulyo, Kec. Cepiring, Kabupaten Kendal, Jawa Tengah 51352</p>
         <p class="warranty-note">Terimakasih telah mempercayakan perbaikan perangkat Anda kepada kami. Garansi berlaku sesuai ketentuan yang diberikan. Kerusakan akibat jatuh, terkena air atau human error tidak termasuk garansi.</p>
     </div>
 
