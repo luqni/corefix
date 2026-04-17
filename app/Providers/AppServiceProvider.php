@@ -24,9 +24,13 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Share Landing Page CMS data with all views
-        if (\Illuminate\Support\Facades\Schema::hasTable('landing_pages')) {
-            $cms = \App\Models\LandingPage::pluck('value', 'key')->toArray();
-            \Illuminate\Support\Facades\View::share('cms', $cms);
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('landing_pages')) {
+                $cms = \App\Models\LandingPage::pluck('value', 'key')->toArray();
+                \Illuminate\Support\Facades\View::share('cms', $cms);
+            }
+        } catch (\Exception $e) {
+            // DB might not be ready during build or migrations
         }
     }
 }
