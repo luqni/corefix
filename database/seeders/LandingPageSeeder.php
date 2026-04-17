@@ -59,7 +59,7 @@ class LandingPageSeeder extends Seeder
         ];
 
         foreach ($contents as $content) {
-            \App\Models\LandingPage::updateOrCreate(['key' => $content['key']], ['value' => $content['value']]);
+            \App\Models\LandingPage::firstOrCreate(['key' => $content['key']], ['value' => $content['value']]);
         }
     }
 }
