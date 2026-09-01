@@ -23,9 +23,12 @@ class TicketDetail extends Component
     // Item Management
     public $newItemDescription = '';
     public $newItemPrice = '';
+    public $newItemCapitalPrice = '';
     public $newItemQty = 1;
+    public $newItemIsSparePart = false;
 
     public $selectedPartId = '';
+    public $scanInput = '';
 
     // Customer Edit
     public $isEditingCustomer = false;
@@ -55,6 +58,8 @@ class TicketDetail extends Component
             if ($part) {
                 $this->newItemDescription = $part->name;
                 $this->newItemPrice = $part->price;
+                $this->newItemCapitalPrice = $part->capital_price;
+                $this->newItemIsSparePart = true;
             }
         }
     }
@@ -104,18 +109,24 @@ class TicketDetail extends Component
         if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
 
         $this->validate([
-            'newItemDescription' => 'required|min:3',
+            'newItemDescription' => 'required|min:2',
             'newItemPrice' => 'required|numeric|min:0',
+            'newItemCapitalPrice' => 'nullable|numeric|min:0',
             'newItemQty' => 'required|integer|min:1',
         ]);
 
-        $capitalPrice = 0;
-        $isSparePart = false;
+        $capitalPrice = ($this->newItemCapitalPrice !== '' && $this->newItemCapitalPrice !== null)
+            ? (float) $this->newItemCapitalPrice
+            : 0;
+
+        $isSparePart = (bool) $this->newItemIsSparePart;
 
         if ($this->selectedPartId) {
             $part = SparePart::find($this->selectedPartId);
             if ($part) {
-                $capitalPrice = $part->capital_price;
+                if ($this->newItemCapitalPrice === '' || $this->newItemCapitalPrice === null) {
+                    $capitalPrice = $part->capital_price;
+                }
                 $isSparePart = true;
             }
         }
@@ -129,8 +140,45 @@ class TicketDetail extends Component
         ]);
 
         $this->recalculateTotal();
-        $this->reset(['newItemDescription', 'newItemPrice', 'newItemQty', 'selectedPartId']);
+        $this->reset(['newItemDescription', 'newItemPrice', 'newItemCapitalPrice', 'newItemQty', 'newItemIsSparePart', 'selectedPartId']);
         $this->loadTicket();
+    }
+
+    public function handleScanSubmit(bool $instantAdd = true)
+    {
+        if (empty(trim($this->scanInput))) {
+            return;
+        }
+
+        $input = trim($this->scanInput);
+        $this->scanInput = '';
+        $this->scanPart($input, $instantAdd);
+    }
+
+    public function scanPart(string $codeOrId, bool $instantAdd = false)
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+
+        $part = SparePart::findByCodeOrId($codeOrId);
+
+        if (!$part) {
+            session()->flash('scan_error', "Suku cadang dengan kode/QR '{$codeOrId}' tidak ditemukan.");
+            return;
+        }
+
+        $this->selectedPartId = $part->id;
+        $this->newItemDescription = $part->name;
+        $this->newItemPrice = $part->price;
+        $this->newItemCapitalPrice = $part->capital_price;
+        $this->newItemIsSparePart = true;
+        $this->newItemQty = 1;
+
+        if ($instantAdd) {
+            $this->addItem();
+            session()->flash('scan_success', "Berhasil menambahkan '{$part->name}' (Rp " . number_format($part->price, 0, ',', '.') . ") ke tagihan tiket.");
+        } else {
+            session()->flash('scan_success', "Suku cadang '{$part->name}' berhasil dipilih. Silakan sesuaikan jumlah atau klik Tambah Item.");
+        }
     }
 
     public function removeItem($itemId)
@@ -243,6 +291,68 @@ class TicketDetail extends Component
 
         $this->loadTicket();
         session()->flash('message', 'Payment marked as paid (Direct Transaction).');
+    }
+
+    public function markAsRefunded()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
+        $oldStatus = $this->ticket->status;
+        $this->ticket->update([
+            'payment_status' => 'refunded',
+            'status' => 'refunded',
+        ]);
+
+        $this->ticket->logs()->create([
+            'user_id' => auth()->id(),
+            'old_status' => $oldStatus,
+            'new_status' => 'refunded',
+            'notes' => 'Status pesanan diubah ke REFUND dan dana ditandai telah dikembalikan/retur.',
+        ]);
+
+        $this->newStatus = 'refunded';
+        $this->loadTicket();
+        session()->flash('message', 'Pesanan berhasil ditandai sebagai REFUND.');
+    }
+
+    public function markAsCancelled()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
+        $oldStatus = $this->ticket->status;
+        $this->ticket->update([
+            'status' => 'cancelled',
+            'payment_status' => $this->ticket->payment_status === 'paid' ? 'refunded' : 'unpaid',
+        ]);
+
+        $this->ticket->logs()->create([
+            'user_id' => auth()->id(),
+            'old_status' => $oldStatus,
+            'new_status' => 'cancelled',
+            'notes' => 'Pesanan DIBATALKAN (Cancel) oleh admin.',
+        ]);
+
+        $this->newStatus = 'cancelled';
+        $this->loadTicket();
+        session()->flash('message', 'Pesanan berhasil DIBATALKAN (Cancel).');
+    }
+
+    public function markAsUnpaid()
+    {
+        if (!auth()->user()->hasRole(['super_admin', 'admin'])) abort(403);
+        
+        $this->ticket->update([
+            'payment_status' => 'unpaid',
+        ]);
+
+        $this->ticket->logs()->create([
+            'user_id' => auth()->id(),
+            'new_status' => $this->ticket->status,
+            'notes' => 'Status pembayaran diubah kembali menjadi UNPAID (Belum Bayar) oleh admin.',
+        ]);
+
+        $this->loadTicket();
+        session()->flash('message', 'Status pembayaran diubah menjadi Unpaid.');
     }
 
     public $searchPart = '';

@@ -18,6 +18,7 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/spareparts', \App\Livewire\Admin\SparepartList::class)->name('spareparts');
     Route::get('/spare-part-types', \App\Livewire\Admin\SparePartTypeList::class)->name('spare-part-types');
     Route::get('/coupons', \App\Livewire\Admin\CouponList::class)->name('coupons');
+    Route::get('/transactions', \App\Livewire\Admin\FinancialTransactionList::class)->name('transactions');
     Route::get('/landing-page', \App\Livewire\Admin\LandingPageEditor::class)->name('landing-page');
 });
 

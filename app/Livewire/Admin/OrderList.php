@@ -58,8 +58,15 @@ class OrderList extends Component
             ->when($this->dateFilter !== 'all', function ($query) {
                 return match ($this->dateFilter) {
                     'today' => $query->whereDate('created_at', today()),
-                    'week' => $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]),
+                    'week' => $query->whereBetween('created_at', [
+                        now()->startOfWeek()->toDateTimeString(),
+                        now()->endOfWeek()->toDateTimeString()
+                    ]),
                     'month' => $query->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year),
+                    'last_month' => $query->whereBetween('created_at', [
+                        now()->subMonth()->startOfMonth()->toDateTimeString(),
+                        now()->subMonth()->endOfMonth()->toDateTimeString()
+                    ]),
                     'year' => $query->whereYear('created_at', now()->year),
                     default => $query,
                 };

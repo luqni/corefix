@@ -12,28 +12,31 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::updateOrCreate([
+        \App\Models\User::firstOrCreate([
             'email' => 'admin@corefix.id',
         ], [
             'name' => 'Admin Corefix',
             'role' => 'admin',
-            'password' => bcrypt('password'),
+            'password' => 'password',
+            'email_verified_at' => now(),
         ]);
 
-        \App\Models\User::updateOrCreate([
+        \App\Models\User::firstOrCreate([
             'email' => 'superadmin@corefix.id',
         ], [
             'name' => 'Super Admin',
             'role' => 'super_admin',
-            'password' => bcrypt('password'),
+            'password' => 'password',
+            'email_verified_at' => now(),
         ]);
 
-        \App\Models\User::updateOrCreate([
+        \App\Models\User::firstOrCreate([
             'email' => 'teknisi@corefix.id',
         ], [
             'name' => 'Teknisi Corefix',
             'role' => 'teknisi',
-            'password' => bcrypt('password'),
+            'password' => 'password',
+            'email_verified_at' => now(),
         ]);
     }
 }

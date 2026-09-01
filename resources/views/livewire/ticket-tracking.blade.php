@@ -42,7 +42,12 @@
                     </div>
                     <div>
                          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold capitalize 
-                            {{ $ticket->status === 'done' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' }}">
+                            {{ match($ticket->status) {
+                                'done' => 'bg-green-100 text-green-800',
+                                'cancelled' => 'bg-red-100 text-red-800',
+                                'refunded' => 'bg-purple-100 text-purple-800',
+                                default => 'bg-blue-100 text-blue-800'
+                            } }}">
                             {{ str_replace('_', ' ', $ticket->status) }}
                         </span>
                     </div>
@@ -139,6 +144,26 @@
                                 <h3 class="font-bold text-lg text-green-900">Pembayaran Lunas</h3>
                                 <p class="text-green-700">Terima kasih! Pembayaran Anda telah terverifikasi.</p>
                                 <p class="text-sm text-green-600 mt-2">Nomor Tiket: <strong>{{ substr($ticket->id, 0, 8) }}</strong></p>
+                            </div>
+                        </div>
+                    @elseif($ticket->payment_status === 'refunded' || $ticket->status === 'refunded')
+                        <div class="bg-purple-50 p-6 rounded-xl border border-purple-100 flex items-start gap-4">
+                            <div class="bg-purple-100 p-2 rounded-full text-purple-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-purple-900">Pesanan Selesai / Direfund</h3>
+                                <p class="text-purple-700 text-sm">Pesanan ini telah diproses refund atau pengembalian dana.</p>
+                            </div>
+                        </div>
+                    @elseif($ticket->status === 'cancelled')
+                        <div class="bg-rose-50 p-6 rounded-xl border border-rose-100 flex items-start gap-4">
+                            <div class="bg-rose-100 p-2 rounded-full text-rose-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-rose-900">Pesanan Dibatalkan (Cancelled)</h3>
+                                <p class="text-rose-700 text-sm">Pesanan perbaikan unit ini telah dibatalkan.</p>
                             </div>
                         </div>
                     @endif
